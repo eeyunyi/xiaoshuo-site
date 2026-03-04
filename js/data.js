@@ -34,7 +34,7 @@ window.NOVEL_DATA = {
                 武器: "笛"
               },
               relations: [
-                { name: "凌司辰", relation: "恋人", charId: null },
+                { name: "凌司辰", relation: "恋人", charId: "0016" },
                 { name: "霖光", relation: "前世今生", charId: null },
                 { name: "羽霜", relation: "好友", charId: null },
                 { name: "千炀", relation: "好友", charId: null },
@@ -99,7 +99,7 @@ window.NOVEL_DATA = {
                 { name: "姜小满", relation: "女儿", charId: "0001" },
                 { name: "荆藜", relation: "修侣", charId: "0012" },
                 { name: "莫廉", relation: "得意弟子", charId: "0002" },
-                { name: "凌问天", relation: "好友", charId: null }
+                { name: "凌问天", relation: "好友", charId: "0018" }
               ]
             },
 
@@ -328,7 +328,7 @@ window.NOVEL_DATA = {
           id: "lingjia",
           name: "岳山凌家",
           desc: "岳山之巅，善使刀与剑、攻法独步天下的强大仙宗。",
-          groupOrder: ["凌家宗族", "十二真人", "前代修士", "凌家弟子", "其他"],
+          groupOrder: ["凌家宗族", "凌家弟子", "十二真人", "其他","前代修士" ],
           characters: [
             {
               id: "0016",
@@ -336,7 +336,7 @@ window.NOVEL_DATA = {
               title: "岳山凌家",
               gender: "男",
               group: "凌家宗族",  
-              desc: "风华绝代的凌家二公子，相貌实力皆为仙门佼佼，剑法为自己开创的【邀月剑法】，被称为”仙门最快的剑“",
+              desc: "风华绝代的凌家二公子，相貌实力皆为仙门佼佼，剑法为自己开创的【邀月剑法】，被称为【仙门最快的剑】",
               attributes: {
                 年龄: "18",
                 身高: "184",
@@ -570,6 +570,337 @@ window.NOVEL_DATA = {
               },
               relations: [],
             },
+            // ====== 追加到 岳山凌家 subCategory（id: "lingjia"）的 characters 数组末尾 ======
+
+{
+  id: "0029",
+  name: "古木真人",
+  title: "岳山凌家",
+  gender: "男",
+  group: "十二真人",
+  desc: "一手奇绝医术的神秘真人，不会任何剑术。",
+  attributes: {
+    年龄: "？",
+    身高: "150",
+    祖籍: "？",
+    武器: "？"
+  },
+  relations: [
+    { name: "机巧仙君", relation: "原身", charId: null },
+    { name: "凌司辰", relation: "徒弟", charId: "0016" },
+    { name: "凌问天", relation: "好友", charId: "0018" }
+  ]
+},
+
+{
+  id: "0030",
+  name: "月鹿真人",
+  title: "岳山凌家",
+  gender: "男",
+  group: "十二真人",
+  desc: "本名姚崇，岳山十二真人之首，凌问天的旧友。",
+  attributes: {
+    年龄: "58",
+    身高: "182",
+    祖籍: "幽州",
+    武器: "双马刀"
+  },
+  relations: [
+    { name: "凌问天", relation: "好友", charId: "0018" }
+  ]
+},
+
+{
+  id: "0031",
+  name: "万蠡真人",
+  title: "岳山凌家",
+  gender: "男",
+  group: "十二真人",
+  desc: "",
+  attributes: {
+    年龄: "62",
+    身高: "180",
+    祖籍: "岳山",
+    武器: "鞭剑"
+  },
+  relations: [
+    { name: "凌问天", relation: "好友", charId: "0018" }
+  ]
+},
+
+{
+  id: "0032",
+  name: "围歧真人",
+  title: "岳山凌家",
+  gender: "男",
+  group: "十二真人",
+  desc: "",
+  attributes: {
+    年龄: "55",
+    身高: "176",
+    祖籍: "涂州",
+    武器: "？"
+  },
+  relations: [
+    { name: "凌问天", relation: "好友", charId: "0018" }
+  ]
+},
+
+{
+  id: "0033",
+  name: "奉钦真人",
+  title: "岳山凌家",
+  gender: "女",
+  group: "十二真人",
+  desc: "",
+  attributes: {
+    年龄: "52",
+    身高: "170",
+    祖籍: "扬州",
+    武器: "？"
+  },
+  relations: [
+    { name: "凌问天", relation: "好友", charId: "0018" },
+    { name: "拾景真人", relation: "兄长", charId: "0034" }
+  ]
+},
+
+{
+  id: "0034",
+  name: "拾景真人",
+  title: "岳山凌家",
+  gender: "男",
+  group: "十二真人",
+  desc: "",
+  attributes: {
+    年龄: "55",
+    身高: "168",
+    祖籍: "扬州",
+    武器: "？"
+  },
+  relations: [
+    { name: "凌问天", relation: "好友", charId: "0018" },
+    { name: "奉钦真人", relation: "妹妹", charId: "0033" }
+  ]
+},
+
+{
+  id: "0035",
+  name: "道同真人",
+  title: "岳山凌家",
+  gender: "男",
+  group: "十二真人",
+  desc: "最年轻的真人，是凌问天的小师弟。",
+  attributes: {
+    年龄: "45",
+    身高: "179",
+    祖籍: "幽州",
+    武器: "？"
+  },
+  relations: [
+    { name: "凌问天", relation: "师兄", charId: "0018" }
+  ]
+},
+
+{
+  id: "0036",
+  name: "衡婴真人",
+  title: "岳山凌家",
+  gender: "女",
+  group: "十二真人",
+  desc: "",
+  attributes: {
+    年龄: "57",
+    身高: "166",
+    祖籍: "幽州",
+    武器: "剑与刀"
+  },
+  relations: [
+    { name: "凌问天", relation: "好友", charId: "0018" }
+  ]
+},
+
+{
+  id: "0037",
+  name: "挪坤真人",
+  title: "岳山凌家",
+  gender: "男",
+  group: "十二真人",
+  desc: "",
+  attributes: {
+    年龄: "56",
+    身高: "174",
+    祖籍: "祁州",
+    武器: "？"
+  },
+  relations: [
+    { name: "凌问天", relation: "好友", charId: "0018" }
+  ]
+},
+
+{
+  id: "0038",
+  name: "乾壁真人",
+  title: "岳山凌家",
+  gender: "男",
+  group: "十二真人",
+  desc: "",
+  attributes: {
+    年龄: "50",
+    身高: "169",
+    祖籍: "岳山",
+    武器: "？"
+  },
+  relations: [
+    { name: "凌问天", relation: "好友", charId: "0018" }
+  ]
+},
+
+{
+  id: "0039",
+  name: "凌蝶衣",
+  title: "岳山凌家",
+  gender: "女",
+  desc: "凌司辰的母亲，因背弃婚约叛逃于十八年前被逐出宗门不许回归。",
+  attributes: {
+    年龄: "终年24",
+    身高: "168",
+    祖籍: "岳山",
+    武器: "寒星剑"
+  },
+  relations: [
+    { name: "凌司辰", relation: "儿子", charId: "0016" },
+    { name: "归尘", relation: "伴侣", charId: null },
+    { name: "凌问天", relation: "兄长", charId: "0018" },
+    { name: "甘丽娘", relation: "师妹", charId: "0019" }
+  ]
+},
+
+{
+  id: "0040",
+  name: "凌正晟",
+  title: "岳山凌家",
+  gender: "男",
+  desc: "凌问天和凌蝶衣的父亲，因凌蝶衣之罪自戕。",
+  attributes: {
+    年龄: "终年68",
+    身高: "？",
+    祖籍: "岳山",
+    武器: "？"
+  },
+  relations: []
+},
+
+{
+  id: "0041",
+  name: "凌小宛",
+  title: "岳山凌家",
+  gender: "女",
+  group: "前代修士",
+  desc: "凌家第四十三代宗主。",
+  attributes: {
+    年龄: "？",
+    身高: "？",
+    祖籍: "岳山",
+    武器: "？"
+  },
+  relations: [
+    { name: "金翎神女", relation: "好友", charId: null }
+  ]
+},
+
+{
+  id: "0042",
+  name: "凌啸云",
+  title: "岳山凌家",
+  gender: "男",
+  group: "前代修士",
+  desc: "凌家引以为傲的杰出先祖。",
+  attributes: {
+    年龄: "？",
+    身高: "？",
+    祖籍: "岳山",
+    武器: "青罡剑"
+  },
+  relations: [
+    { name: "云海战神", relation: "飞升后", charId: null },
+    { name: "凌啸龙", relation: "兄长", charId: "0043" },
+    { name: "姜四娘", relation: "修侣", charId: "0044" },
+    { name: "凌薇薇", relation: "女儿", charId: "0045" }
+  ]
+},
+
+{
+  id: "0043",
+  name: "凌啸龙",
+  title: "岳山凌家",
+  gender: "男",
+  group: "前代修士",
+  desc: "凌家第四十代宗主，凌啸云的长兄。",
+  attributes: {
+    年龄: "？",
+    身高: "？",
+    祖籍: "岳山",
+    武器: "？"
+  },
+  relations: [
+    { name: "凌啸云", relation: "弟弟", charId: "0042" }
+  ]
+},
+
+{
+  id: "0044",
+  name: "姜四娘",
+  title: "岳山凌家",
+  gender: "女",
+  group: "前代修士",
+  desc: "凌啸云的修侣，被魔物残害。",
+  attributes: {
+    年龄: "终年21",
+    身高: "？",
+    祖籍: "涂州",
+    武器: "玉笛"
+  },
+  relations: [
+    { name: "凌啸云", relation: "修侣", charId: "0042" },
+    { name: "凌薇薇", relation: "女儿", charId: "0045" }
+  ]
+},
+
+{
+  id: "0045",
+  name: "凌薇薇",
+  title: "岳山凌家",
+  gender: "女",
+  group: "前代修士",
+  desc: "凌啸云的女儿，被魔物残害。",
+  attributes: {
+    年龄: "？",
+    身高: "？",
+    祖籍: "岳山",
+    武器: "null"
+  },
+  relations: [
+    { name: "凌啸云", relation: "父亲", charId: "0042" },
+    { name: "姜四娘", relation: "母亲", charId: "0044" }
+  ]
+},
+
+{
+  id: "0046",
+  name: "凌瑜",
+  title: "岳山凌家",
+  gender: "男",
+  group: "前代修士",
+  desc: "仙魔大战时期的凌家宗主。",
+  attributes: {
+    年龄: "？",
+    身高: "？",
+    祖籍: "岳山",
+    武器: "？"
+  },
+  relations: []
+},
           ],
         },
 
