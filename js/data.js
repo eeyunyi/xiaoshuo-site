@@ -18,12 +18,14 @@ window.NOVEL_DATA = {
           id: "jiangjiia",
           name: "涂州姜家",
           desc: "笛箫纵鸟，琴瑟控兽。以乐器与灵兽组合闻名的涂州仙门。",
+          groupOrder: ["姜家宗族", "姜家弟子", "其他"],
           characters: [
             {
               id: "0001",
               name: "姜小满",
               title: "涂州姜家",
               gender: "女",
+              group: "姜家宗族",
               desc: "宅居在家、爱看话本的怪病独女，传闻与人说话超十个字会晕倒。",
               attributes: {
                 年龄: "17",
@@ -46,6 +48,7 @@ window.NOVEL_DATA = {
               name: "莫廉",
               title: "涂州姜家",
               gender: "男",
+              group: "姜家弟子",
               desc: "姜清竹的大弟子，姜家大师兄，为人谦逊有礼，人称【凤箫君子】。",
               attributes: {
                 年龄: "29",
@@ -65,6 +68,7 @@ window.NOVEL_DATA = {
               name: "洛雪茗",
               title: "涂州姜家",
               gender: "女",
+              group: "姜家弟子",
               desc: "涂州第一美人，因相貌脱俗而在各大仙门追求者众多，然为人淡漠冰冷。",
               attributes: {
                 年龄: "24",
@@ -83,6 +87,7 @@ window.NOVEL_DATA = {
               name: "姜清竹",
               title: "涂州姜家",
               gender: "男",
+              group: "姜家宗族",
               desc: "性格随和的姜家现任宗主。",
               attributes: {
                 年龄: "44",
@@ -103,6 +108,7 @@ window.NOVEL_DATA = {
               name: "姜榕",
               title: "涂州姜家",
               gender: "女",
+              group: "姜家宗族",
               desc: "姜清竹的姐姐，姜家众弟子的师姑，人称【铁娘子】。",
               attributes: {
                 年龄: "45",
@@ -123,6 +129,7 @@ window.NOVEL_DATA = {
               name: "余萝",
               title: "涂州姜家",
               gender: "女",
+              group: "姜家弟子",
               desc: "分组武赛常拿第一的姜家得意门生。",
               attributes: {
                 年龄: "25",
@@ -143,6 +150,7 @@ window.NOVEL_DATA = {
               name: "齐茵",
               title: "涂州姜家",
               gender: "女",
+              group: "姜家弟子",
               desc: "娴静不爱争斗的姜家修士。",
               attributes: {
                 年龄: "24",
@@ -163,6 +171,7 @@ window.NOVEL_DATA = {
               name: "冯梨儿",
               title: "涂州姜家",
               gender: "女",
+              group: "姜家弟子",
               desc: "姜小满同年岁的小师姐，活泼好动。",
               attributes: {
                 年龄: "18",
@@ -182,6 +191,7 @@ window.NOVEL_DATA = {
               name: "白顺",
               title: "涂州姜家",
               gender: "男",
+              group: "姜家弟子",
               desc: "擅长主锋的姜家修士。",
               attributes: {
                 年龄: "20",
@@ -201,6 +211,7 @@ window.NOVEL_DATA = {
               name: "王铮",
               title: "涂州姜家",
               gender: "男",
+              group: "姜家弟子",
               desc: "姜家修士。",
               attributes: {
                 年龄: "24",
@@ -220,6 +231,7 @@ window.NOVEL_DATA = {
               name: "秦云昭",
               title: "涂州姜家",
               gender: "男",
+              group: "姜家弟子",
               desc: "姜家修士。",
               attributes: {
                 年龄: "23",
@@ -316,12 +328,14 @@ window.NOVEL_DATA = {
           id: "lingjia",
           name: "岳山凌家",
           desc: "岳山之巅，善使刀与剑、攻法独步天下的强大仙宗。",
+          groupOrder: ["凌家宗族", "十二真人", "前代修士", "凌家弟子", "其他"],
           characters: [
             {
               id: "0016",
               name: "凌司辰",
               title: "岳山凌家",
               gender: "男",
+              group: "凌家宗族",  
               desc: "风华绝代的凌家二公子，相貌实力皆为仙门佼佼，剑法为自己开创的【邀月剑法】，被称为”仙门最快的剑“",
               attributes: {
                 年龄: "18",
@@ -343,6 +357,7 @@ window.NOVEL_DATA = {
               name: "凌北风",
               title: "岳山凌家",
               gender: "男",
+              group: "凌家宗族",  
               desc: "凌家大公子。拥有【狂影刀】【黑阎罗】【斩太岁】等多重称号的当今仙门最强者，不是正在诛魔，就是...",
               attributes: {
                 年龄: "26",
@@ -364,6 +379,7 @@ window.NOVEL_DATA = {
               name: "凌问天",
               title: "岳山凌家",
               gender: "男",
+              group: "凌家宗族",  
               desc: "凌家现任宗主，制定了严苛的凌家门规。",
               attributes: {
                 年龄: "60",
@@ -385,6 +401,7 @@ window.NOVEL_DATA = {
               name: "甘丽娘",
               title: "岳山凌家",
               gender: "女",
+              group: "凌家宗族",  
               desc: "凌家宗主夫人，叱诧风云的甘夫人。",
               attributes: {
                 年龄: "43",
@@ -404,6 +421,7 @@ window.NOVEL_DATA = {
               name: "凌北照",
               title: "岳山凌家",
               gender: "男",
+              group: "凌家宗族",  
               desc: "凌家三公子。",
               attributes: {
                 年龄: "7",
@@ -423,6 +441,7 @@ window.NOVEL_DATA = {
               name: "向鼎",
               title: "岳山凌家",
               gender: "男",
+               group: "凌家弟子",
               desc: "爱穿花袍，人称【阴阳剑】，实力强大。",
               attributes: {
                 年龄: "22",
@@ -443,6 +462,7 @@ window.NOVEL_DATA = {
               name: "宋秉伦",
               title: "岳山凌家",
               gender: "男",
+               group: "凌家弟子",
               desc: "喜欢小动物的凌家刀修。",
               attributes: {
                 年龄: "21",
@@ -460,6 +480,7 @@ window.NOVEL_DATA = {
               name: "荆一鸣",
               title: "岳山凌家",
               gender: "男",
+               group: "凌家弟子",
               desc: "家境优渥却实力平凡的凌家剑修。",
               attributes: {
                 年龄: "17",
@@ -479,6 +500,7 @@ window.NOVEL_DATA = {
               name: "颜浚",
               title: "岳山凌家",
               gender: "男",
+               group: "凌家弟子",
               desc: "凌家修士。",
               attributes: {
                 年龄: "15",
@@ -493,6 +515,7 @@ window.NOVEL_DATA = {
               name: "魏笛",
               title: "岳山凌家",
               gender: "男",
+               group: "凌家弟子",
               desc: "凌家修士。",
               attributes: {
                 年龄: "20",
@@ -507,6 +530,7 @@ window.NOVEL_DATA = {
               name: "穆弘",
               title: "岳山凌家",
               gender: "男",
+               group: "凌家弟子",
               desc: "凌家修士。",
               attributes: {
                 年龄: "19",
@@ -521,6 +545,7 @@ window.NOVEL_DATA = {
               name: "苏娴",
               title: "岳山凌家",
               gender: "女",
+               group: "凌家弟子",
               desc: "凌家修士。",
               attributes: {
                 年龄: "17",
@@ -535,6 +560,7 @@ window.NOVEL_DATA = {
               name: "宋渺",
               title: "岳山凌家",
               gender: "女",
+               group: "凌家弟子",
               desc: "凌家修士。",
               attributes: {
                 年龄: "22",

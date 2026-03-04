@@ -122,12 +122,18 @@
     `;
   }
 
-  function renderCharacterGrid(subCat) {
-    if (!subCat) return '<p class="empty-text">暂无角色</p>';
+function renderCharacterGrid(subCat) {
+  if (!subCat) return '<p class="empty-text">暂无角色</p>';
+
+  const chars = subCat.characters || [];
+
+  // ✅ 没有 group：完全沿用你以前的渲染
+  const hasGroup = chars.some(ch => ch.group && String(ch.group).trim());
+  if (!hasGroup) {
     return `
       <div class="sub-desc">${subCat.desc}</div>
       <div class="characters-grid">
-        ${subCat.characters.map((ch, i) => `
+        ${chars.map((ch, i) => `
           <div class="character-card" style="--delay: ${i * 0.05}s" onclick="window.__app.openCharacter('${ch.id}')">
             <div class="char-avatar">
               <div class="char-avatar-inner">${ch.name.charAt(0)}</div>
@@ -141,6 +147,57 @@
       </div>
     `;
   }
+
+  // ✅ 有 group：分组显示
+  const order = subCat.groupOrder && subCat.groupOrder.length
+    ? subCat.groupOrder
+    : ["凌家宗族", "凌家弟子", "其他"];
+
+  const groups = new Map();
+  for (const ch of chars) {
+    const g = (ch.group && String(ch.group).trim()) ? String(ch.group).trim() : "其他";
+    if (!groups.has(g)) groups.set(g, []);
+    groups.get(g).push(ch);
+  }
+
+  const groupNames = Array.from(groups.keys()).sort((a, b) => {
+    const ia = order.indexOf(a);
+    const ib = order.indexOf(b);
+    if (ia === -1 && ib === -1) return a.localeCompare(b, 'zh');
+    if (ia === -1) return 1;
+    if (ib === -1) return -1;
+    return ia - ib;
+  });
+
+  return `
+    <div class="sub-desc">${subCat.desc}</div>
+    ${groupNames.map((gname) => {
+      const list = groups.get(gname) || [];
+      if (!list.length) return '';
+      return `
+        <div class="group-section">
+          <div class="group-header">
+            <div class="group-title">${gname}</div>
+            <div class="group-count">${list.length} 人</div>
+          </div>
+          <div class="characters-grid">
+            ${list.map((ch, i) => `
+              <div class="character-card" style="--delay: ${i * 0.05}s" onclick="window.__app.openCharacter('${ch.id}')">
+                <div class="char-avatar">
+                  <div class="char-avatar-inner">${ch.name.charAt(0)}</div>
+                </div>
+                <div class="char-info">
+                 <div class="char-name">${ch.name}</div>
+                 <div class="char-role">${renderGender(ch.gender)}</div>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }).join('')}
+  `;
+}
 
   function switchSub(catId, subId) {
     const cat = NOVEL_DATA.categories.find(c => c.id === catId);

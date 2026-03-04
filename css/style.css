@@ -799,3 +799,26 @@ body::before {
   border-color: rgba(183,183,183,.25);
   background: rgba(183,183,183,.08);
 }
+
+.group-section { margin-top: 18px; }
+
+.group-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 10px 6px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.group-title {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,0.92);
+}
+
+.group-count {
+  font-size: 12px;
+  color: rgba(255,255,255,0.55);
+}
