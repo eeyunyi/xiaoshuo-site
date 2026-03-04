@@ -349,7 +349,8 @@ window.NOVEL_DATA = {
                 { name: "古木真人", relation: "师父", charId: "0029" },
                 { name: "凌问天", relation: "舅舅", charId: "0018" },
                 { name: "凌蝶衣", relation: "母亲", charId: "0039" },
-                { name: "归尘", relation: "父亲", charId: null }
+                { name: "文梦语", relation: "婚约", charId: "0047" },
+                { name: "归尘", relation: "父亲", charId:"0081" }
               ]
             },
             {
@@ -781,7 +782,7 @@ window.NOVEL_DATA = {
   name: "凌正晟",
   title: "岳山凌家",
   gender: "男",
-  desc: "凌问天和凌蝶衣的父亲，因凌蝶衣之罪自戕。",
+  desc: "前任宗主。凌问天与凌蝶衣的父亲，因凌蝶衣之罪自戕。",
   attributes: {
     年龄: "终年68",
     身高: "？",
@@ -904,21 +905,194 @@ window.NOVEL_DATA = {
           ],
         },
 
-        {
-          id: "wenjia",
-          name: "青州文家",
-          desc: "（待补充）",
-          characters: [
-            {
-              id: "placeholder_wenjia",
-              name: "待补充",
-              title: "青州文家",
-              desc: "该门派人物尚未整理。",
-              attributes: {},
-              relations: []
-            }
-          ]
-        },
+     {
+  id: "wenjia",
+  name: "青州文家",
+  desc: "潮湿之地善蛊虫与丹药的仙门世家。",
+  groupOrder: ["文家宗族", "其他"],
+  characters: [
+{
+  id: "0047",
+  name: "文梦语",
+  title: "青州文家",
+  gender: "女",
+  group: "文家宗族",
+  desc: "聪慧伶俐却生来体无灵力的文家三小姐。",
+  attributes: {
+    年龄: "19",
+    身高: "160",
+    祖籍: "青州",
+    武器: ""
+  },
+  relations: [
+    { name: "班淑", relation: "母亲", charId: "0052" },
+    { name: "文伯远", relation: "父亲", charId: "0049" },
+    { name: "文伯良", relation: "大伯", charId: "0048" },
+    { name: "文梦瑶", relation: "堂姊", charId: "0050" },
+    { name: "飓衍", relation: "爱慕", charId: "0095" },
+    { name: "凌司辰", relation: "婚约", charId: "0016" },
+    { name: "夜良", relation: "好友", charId: "0102" }
+  ]
+},
+
+{
+  id: "0048",
+  name: "文伯良",
+  title: "青州文家",
+  gender: "男",
+  group: "文家宗族",
+  desc: "文家现任宗主。",
+  attributes: {
+    年龄: "44",
+    身高: "185",
+    祖籍: "青州",
+    武器: ""
+  },
+  relations: [
+    { name: "文伯远", relation: "弟弟", charId: "0049" },
+    { name: "文梦瑶", relation: "女儿", charId: "0050" },
+    { name: "文志成", relation: "儿子", charId: "0051" }
+  ]
+},
+
+{
+  id: "0049",
+  name: "文伯远",
+  title: "青州文家",
+  gender: "男",
+  group: "文家宗族",
+  desc: "文家二把手，人称【血蛊手】。",
+  attributes: {
+    年龄: "42",
+    身高: "186",
+    祖籍: "青州",
+    武器: ""
+  },
+  relations: [
+    { name: "文伯良", relation: "兄长", charId: "0048" },
+    { name: "文梦语", relation: "女儿", charId: "0047" },
+    { name: "班淑", relation: "修侣", charId: "0052" },
+    { name: "柳夫人", relation: "修侣", charId: "0053" }
+  ]
+},
+
+{
+  id: "0050",
+  name: "文梦瑶",
+  title: "青州文家",
+  gender: "女",
+  group: "文家宗族",
+  desc: "文家大小姐。",
+  attributes: {
+    年龄: "26",
+    身高: "172",
+    祖籍: "青州",
+    武器: ""
+  },
+  relations: [
+    { name: "文伯良", relation: "父亲", charId: "0048" },
+    { name: "文志成", relation: "弟弟", charId: "0051" },
+    { name: "文梦语", relation: "堂妹", charId: "0047" },
+    { name: "罗云禾", relation: "修侣", charId: "0055" }
+  ]
+},
+
+{
+  id: "0051",
+  name: "文志成",
+  title: "青州文家",
+  gender: "男",
+  group: "文家宗族",
+  desc: "文家二公子。",
+  attributes: {
+    年龄: "21",
+    身高: "179",
+    祖籍: "青州",
+    武器: ""
+  },
+  relations: [
+    { name: "文伯良", relation: "父亲", charId: "0048" },
+    { name: "文梦瑶", relation: "长姊", charId: "0050" },
+    { name: "文梦语", relation: "堂妹", charId: "0047" }
+  ]
+},
+
+{
+  id: "0052",
+  name: "班淑",
+  title: "青州文家",
+  gender: "女",
+  group: "其他",
+  desc: "文梦语的母亲，文伯远患病逝去的前夫人。",
+  attributes: {
+    年龄: "？",
+    身高: "158",
+    祖籍: "幽州",
+    武器: ""
+  },
+  relations: [
+    { name: "文梦语", relation: "女儿", charId: "0047" }
+  ]
+},
+
+{
+  id: "0053",
+  name: "柳夫人",
+  title: "青州文家",
+  gender: "女",
+  group: "文家宗族",
+  desc: "文伯远新结的修侣。",
+  attributes: {
+    年龄: "29",
+    身高: "166",
+    祖籍: "扬州",
+    武器: ""
+  },
+  relations: [
+    { name: "文伯远", relation: "修侣", charId: "0049" }
+  ]
+},
+
+{
+  id: "0054",
+  name: "珠珠",
+  title: "青州文家",
+  gender: "女",
+  group: "其他",
+  desc: "文梦语的丫鬟。",
+  attributes: {
+    年龄: "16",
+    身高: "152",
+    祖籍: "云州",
+    武器: ""
+  },
+  relations: [
+    { name: "文梦语", relation: "侍奉", charId: "0047" }
+  ]
+},
+
+{
+  id: "0055",
+  name: "罗云禾",
+  title: "玉清门",
+  gender: "男",
+  group: "其他",
+  desc: "",
+  attributes: {
+    年龄: "28",
+    身高: "173",
+    祖籍: "皇都",
+    武器: ""
+  },
+  relations: [
+    { name: "文梦瑶", relation: "修侣", charId: "0050" }
+  ]
+}
+
+
+
+  ]
+},
         {
           id: "xuanyangzong",
           name: "太衡山玄阳宗",
