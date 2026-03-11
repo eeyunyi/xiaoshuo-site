@@ -590,7 +590,8 @@ window.NOVEL_DATA = {
                   "relation": "父亲",
                   "charId": "0081"
                 }
-              ]
+              ],
+              "avatar": "images/0016.png"
             },
             {
               "id": "0017",
@@ -1442,7 +1443,8 @@ window.NOVEL_DATA = {
                   "relation": "好友",
                   "charId": "0102"
                 }
-              ]
+              ],
+              "avatar": "images/0047.png"
             },
             {
               "id": "0048",
@@ -1732,7 +1734,8 @@ window.NOVEL_DATA = {
                 "武器": ""
               },
               "relations": [],
-              "group": "玄阳宗修士"
+              "group": "玄阳宗修士",
+              "avatar": "images/0059.png"
             },
             {
               "id": "0060",
@@ -1960,7 +1963,8 @@ window.NOVEL_DATA = {
                 "武器": ""
               },
               "relations": [],
-              "group": "水脉"
+              "group": "水脉",
+              "avatar": "images/0072.png"
             },
             {
               "id": "0073",
@@ -1975,7 +1979,8 @@ window.NOVEL_DATA = {
                 "武器": ""
               },
               "relations": [],
-              "group": "水脉"
+              "group": "水脉",
+              "avatar": "images/0073.png"
             },
             {
               "id": "0074",
@@ -1990,7 +1995,8 @@ window.NOVEL_DATA = {
                 "武器": ""
               },
               "relations": [],
-              "group": "东渊之将"
+              "group": "东渊之将",
+              "avatar": "images/0074.png"
             },
             {
               "id": "0075",
@@ -2005,7 +2011,8 @@ window.NOVEL_DATA = {
                 "武器": ""
               },
               "relations": [],
-              "group": "东渊之将"
+              "group": "东渊之将",
+              "avatar": "images/0075.png"
             },
             {
               "id": "0076",
@@ -2020,7 +2027,8 @@ window.NOVEL_DATA = {
                 "武器": ""
               },
               "relations": [],
-              "group": "东渊之将"
+              "group": "东渊之将",
+              "avatar": "images/0076.png"
             },
             {
               "id": "0077",
@@ -2035,7 +2043,8 @@ window.NOVEL_DATA = {
                 "武器": ""
               },
               "relations": [],
-              "group": "东渊之将"
+              "group": "东渊之将",
+              "avatar": "images/0077.png"
             },
             {
               "id": "0078",
@@ -2121,7 +2130,8 @@ window.NOVEL_DATA = {
                 "武器": ""
               },
               "relations": [],
-              "group": "土脉"
+              "group": "土脉",
+              "avatar": "images/0082.png"
             },
             {
               "id": "0083",
@@ -2151,7 +2161,8 @@ window.NOVEL_DATA = {
                 "武器": ""
               },
               "relations": [],
-              "group": "北渊之将"
+              "group": "北渊之将",
+              "avatar": "images/0084.png"
             },
             {
               "id": "0085",
@@ -2166,7 +2177,8 @@ window.NOVEL_DATA = {
                 "武器": ""
               },
               "relations": [],
-              "group": "北渊之将"
+              "group": "北渊之将",
+              "avatar": "images/0085.png"
             },
             {
               "id": "0086",
@@ -2196,7 +2208,8 @@ window.NOVEL_DATA = {
                 "武器": ""
               },
               "relations": [],
-              "group": "土脉"
+              "group": "土脉",
+              "avatar": "images/0087.png"
             }
           ]
         },
@@ -2222,7 +2235,8 @@ window.NOVEL_DATA = {
                 "武器": ""
               },
               "relations": [],
-              "group": "火脉"
+              "group": "火脉",
+              "avatar": "images/0088.png"
             },
             {
               "id": "0089",
@@ -2237,7 +2251,8 @@ window.NOVEL_DATA = {
                 "武器": ""
               },
               "relations": [],
-              "group": "火脉"
+              "group": "火脉",
+              "avatar": "images/0089.png"
             },
             {
               "id": "0090",
@@ -2252,7 +2267,8 @@ window.NOVEL_DATA = {
                 "武器": ""
               },
               "relations": [],
-              "group": "火脉"
+              "group": "火脉",
+              "avatar": "images/0090.png"
             },
             {
               "id": "0091",
@@ -2282,7 +2298,8 @@ window.NOVEL_DATA = {
                 "武器": ""
               },
               "relations": [],
-              "group": "西渊之将"
+              "group": "西渊之将",
+              "avatar": "images/0092.png"
             },
             {
               "id": "0093",
@@ -2338,7 +2355,8 @@ window.NOVEL_DATA = {
                 "武器": ""
               },
               "relations": [],
-              "group": "风脉"
+              "group": "风脉",
+              "avatar": "images/0095.png"
             },
             {
               "id": "0096",
@@ -2353,7 +2371,8 @@ window.NOVEL_DATA = {
                 "武器": ""
               },
               "relations": [],
-              "group": "风脉"
+              "group": "风脉",
+              "avatar": "images/0096.png"
             },
             {
               "id": "0097",
@@ -2368,7 +2387,8 @@ window.NOVEL_DATA = {
                 "武器": ""
               },
               "relations": [],
-              "group": "南渊之将"
+              "group": "南渊之将",
+              "avatar": "images/0097.png"
             },
             {
               "id": "0098",
@@ -2556,7 +2576,8 @@ window.NOVEL_DATA = {
                 "武器": ""
               },
               "relations": [],
-              "group": "战神"
+              "group": "战神",
+              "avatar": "images/0108.png"
             },
             {
               "id": "0109",
@@ -2571,7 +2592,8 @@ window.NOVEL_DATA = {
                 "武器": ""
               },
               "relations": [],
-              "group": "战神"
+              "group": "战神",
+              "avatar": "images/0109.png"
             },
             {
               "id": "0110",
@@ -2601,7 +2623,8 @@ window.NOVEL_DATA = {
                 "武器": ""
               },
               "relations": [],
-              "group": "战神"
+              "group": "战神",
+              "avatar": "images/0111.png"
             },
             {
               "id": "0112",
@@ -3288,7 +3311,8 @@ window.NOVEL_DATA = {
                 "祖籍": "",
                 "武器": ""
               },
-              "relations": []
+              "relations": [],
+              "avatar": "images/0155.png"
             },
             {
               "id": "0156",
@@ -3302,7 +3326,8 @@ window.NOVEL_DATA = {
                 "祖籍": "",
                 "武器": ""
               },
-              "relations": []
+              "relations": [],
+              "avatar": "images/0156.png"
             },
             {
               "id": "0157",

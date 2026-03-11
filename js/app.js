@@ -25,6 +25,25 @@
   return `<span class="gender-badge unknown">?</span>`;
 }
 
+
+  function getAvatarSrc(ch) {
+    return (ch && ch.avatar) ? ch.avatar : 'images/placeholder.png';
+  }
+
+  function renderAvatarImage(ch, cls, alt) {
+    return `<img class="${cls}" src="${getAvatarSrc(ch)}" alt="${alt || (ch?.name || '')}" onerror="this.onerror=null;this.src='images/placeholder.png'">`;
+  }
+
+  function findCharacterById(charId) {
+    for (const cat of NOVEL_DATA.categories) {
+      for (const sub of cat.subCategories) {
+        const found = sub.characters.find(c => c.id === charId);
+        if (found) return found;
+      }
+    }
+    return null;
+  }
+
   function init() {
     renderHome();
     window.addEventListener('popstate', handlePopState);
@@ -155,10 +174,7 @@ function renderCharacterGrid(subCat) {
         ${chars.map((ch, i) => `
           <div class="character-card" style="--delay: ${i * 0.05}s" onclick="window.__app.openCharacter('${ch.id}')">
             <div class="char-avatar">
-              ${ch.avatar
-                ? `<img class="char-avatar-img" src="${ch.avatar}" alt="${ch.name}">`
-                : `<div class="char-avatar-inner">${ch.name.charAt(0)}</div>`
-              }
+              ${renderAvatarImage(ch, 'char-avatar-img', ch.name)}
             </div>
             <div class="char-info">
              <div class="char-name">${ch.name}</div>
@@ -206,10 +222,7 @@ function renderCharacterGrid(subCat) {
             ${list.map((ch, i) => `
               <div class="character-card" style="--delay: ${i * 0.05}s" onclick="window.__app.openCharacter('${ch.id}')">
                 <div class="char-avatar">
-                  ${ch.avatar
-                    ? `<img class="char-avatar-img" src="${ch.avatar}" alt="${ch.name}">`
-                    : `<div class="char-avatar-inner">${ch.name.charAt(0)}</div>`
-                  }
+                  ${renderAvatarImage(ch, 'char-avatar-img', ch.name)}
                 </div>
                 <div class="char-info">
                  <div class="char-name">${ch.name}</div>
@@ -277,10 +290,7 @@ function renderCharacterGrid(subCat) {
         <div class="modal-body">
           <div class="modal-top">
             <div class="modal-avatar" ${ch.avatar ? `onclick="event.stopPropagation(); window.__app.openLightbox('avatar_${ch.id}', null)" style="cursor: pointer;"` : ''}>
-              ${ch.avatar
-                ? `<img class="modal-avatar-img" src="${ch.avatar}" alt="${ch.name}">`
-                : `<div class="modal-avatar-inner">${ch.name.charAt(0)}</div>`
-              }
+              ${renderAvatarImage(ch, 'modal-avatar-img', ch.name)}
             </div>
             <div class="modal-title-area">
               <div class="modal-char-title">${ch.title}</div>
@@ -301,15 +311,17 @@ function renderCharacterGrid(subCat) {
             <div class="modal-relations">
               <h3 class="relations-title">相关角色</h3>
               <div class="relations-grid">
-                ${ch.relations.map(r => `
-                  <div class="relation-item" onclick="event.stopPropagation(); window.__app.openCharacter('${r.charId}')">
+                ${ch.relations.map(r => {
+                  const relationChar = r.charId ? findCharacterById(r.charId) : null;
+                  return `
+                  <div class="relation-item" onclick="${r.charId ? `event.stopPropagation(); window.__app.openCharacter('${r.charId}')` : 'event.stopPropagation();'}">
                     <div class="relation-avatar">
-                      <div class="relation-avatar-inner">${r.name.charAt(0)}</div>
+                      ${relationChar ? renderAvatarImage(relationChar, 'modal-avatar-img', r.name) : `<img class="modal-avatar-img" src="images/placeholder.png" alt="${r.name}" onerror="this.onerror=null;this.src='images/placeholder.png'">`}
                     </div>
                     <div class="relation-name">${r.name}</div>
                     <div class="relation-type">${r.relation}</div>
                   </div>
-                `).join('')}
+                `}).join('')}
               </div>
             </div>
           ` : ''}
