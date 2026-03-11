@@ -27,7 +27,10 @@
 
 
   function getAvatarSrc(ch) {
-    return (ch && ch.avatar) ? ch.avatar : 'images/placeholder.png';
+    if (!ch) return 'images/placeholder.png';
+    if (ch.avatar && String(ch.avatar).trim()) return ch.avatar;
+    if (ch.id && String(ch.id).trim()) return `images/${String(ch.id).trim()}.png`;
+    return 'images/placeholder.png';
   }
 
   function renderAvatarImage(ch, cls, alt) {
@@ -289,7 +292,7 @@ function renderCharacterGrid(subCat) {
         </button>
         <div class="modal-body">
           <div class="modal-top">
-            <div class="modal-avatar" ${ch.avatar ? `onclick="event.stopPropagation(); window.__app.openLightbox('avatar_${ch.id}', null)" style="cursor: pointer;"` : ''}>
+            <div class="modal-avatar" ${(ch.avatar || ch.id) ? `onclick="event.stopPropagation(); window.__app.openLightbox('avatar_${ch.id}', null)" style="cursor: pointer;"` : ''}>
               ${renderAvatarImage(ch, 'modal-avatar-img', ch.name)}
             </div>
             <div class="modal-title-area">
@@ -457,11 +460,12 @@ function renderCharacterGrid(subCat) {
         }
         if (character) break;
       }
-      if (character && character.avatar) {
+      if (character) {
+        const avatarSrc = getAvatarSrc(character);
         // 创建临时的单图列表
         currentLightboxList = [{
           id: fanartId,
-          src: character.avatar,
+          src: avatarSrc,
           desc: `${character.name}的头像`,
           tags: [avatarCharId]
         }];
@@ -607,10 +611,7 @@ function renderCharacterGrid(subCat) {
       return `
         <div class="search-result-item" onclick="window.__app.selectSearchResult('${character.id}')">
           <div class="search-result-avatar">
-            ${character.avatar
-              ? `<img src="${character.avatar}" alt="${character.name}">`
-              : `<div class="search-result-avatar-text">${character.name.charAt(0)}</div>`
-            }
+            <img src="${getAvatarSrc(character)}" alt="${character.name}" onerror="this.onerror=null;this.src='images/placeholder.png'">
           </div>
           <div class="search-result-info">
             <div class="search-result-name">${character.name}</div>
