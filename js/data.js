@@ -26,6 +26,7 @@ window.NOVEL_DATA = {
               title: "涂州姜家",
               gender: "女",
               group: "姜家宗族",
+              avatar: "images/0001.png",
               desc: "宅居在家、爱看话本的怪病独女，传闻与人说话超十个字会晕倒。",
               attributes: {
                 年龄: "17",
@@ -49,6 +50,7 @@ window.NOVEL_DATA = {
               title: "涂州姜家",
               gender: "男",
               group: "姜家弟子",
+              avatar: "images/0002.png",
               desc: "姜清竹的大弟子，姜家大师兄，为人谦逊有礼，人称【凤箫君子】。",
               attributes: {
                 年龄: "29",
@@ -69,6 +71,7 @@ window.NOVEL_DATA = {
               title: "涂州姜家",
               gender: "女",
               group: "姜家弟子",
+              avatar: "images/0003.png",
               desc: "涂州第一美人，因相貌脱俗而在各大仙门追求者众多，然为人淡漠冰冷。",
               attributes: {
                 年龄: "24",
@@ -1274,6 +1277,45 @@ window.NOVEL_DATA = {
           ]
         }
       ]
+    }
+  ],
+
+  fanarts: [
+    {
+      id: "fa001",
+      src: "images/0001.png",
+      desc: "姜小满立绘",
+      tags: ["0001"]
+    },
+    {
+      id: "fa002",
+      src: "images/0001_b.png",
+      desc: "姜小满·怪病少女",
+      tags: ["0001"]
+    },
+    {
+      id: "fa003",
+      src: "images/0002.png",
+      desc: "莫廉·凤箫君子",
+      tags: ["0002"]
+    },
+    {
+      id: "fa004",
+      src: "images/0003.png",
+      desc: "洛雪茗·涂州第一美人",
+      tags: ["0003"]
+    },
+    {
+      id: "fa005",
+      src: "images/0001.png",
+      desc: "姜小满与莫廉·师妹与大师兄",
+      tags: ["0001", "0002"]
+    },
+    {
+      id: "fa006",
+      src: "images/0002.png",
+      desc: "莫廉与洛雪茗·箫音双影",
+      tags: ["0002", "0003"]
     }
   ]
 };

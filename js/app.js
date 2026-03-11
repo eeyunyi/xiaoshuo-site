@@ -2,10 +2,13 @@
  * 小说角色百科 - 应用逻辑
  */
 (function () {
-  let currentView = 'home'; // home | category | subcategory
+  let currentView = 'home'; // home | category | subcategory | gallery
   let currentCategoryId = null;
   let currentSubCategoryId = null;
   let currentCharacterId = null;
+  let currentLightboxList = [];
+  let currentLightboxIndex = 0;
+  let searchResults = [];
 
   const app = document.getElementById('app');
 
@@ -25,6 +28,13 @@
   function init() {
     renderHome();
     window.addEventListener('popstate', handlePopState);
+    // 点击空白区域关闭搜索下拉
+    document.addEventListener('click', (e) => {
+      const wrapper = document.querySelector('.search-wrapper');
+      if (wrapper && !wrapper.contains(e.target)) {
+        clearSearch();
+      }
+    });
   }
 
   function pushState(view, catId, subCatId) {
@@ -41,6 +51,8 @@
       renderHome();
     } else if (state.view === 'category') {
       renderCategory(state.catId, false);
+    } else if (state.view === 'gallery') {
+      renderGallery(state.charId, false);
     }
   }
 
@@ -56,6 +68,13 @@
           <h1 class="home-title">角色百科</h1>
           <p class="home-subtitle">点击阵营查看旗下角色</p>
           <div class="header-ornament-right"></div>
+        </div>
+        <div class="search-wrapper">
+          <div class="search-container">
+            <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+            <input type="text" id="searchBox" class="search-input" placeholder="搜索角色名称..." autocomplete="off" oninput="window.__app.searchCharacters(this.value)">
+          </div>
+          <div id="searchDropdown" class="search-dropdown"></div>
         </div>
         <div class="categories-grid">
           ${cats.map((cat, i) => `
@@ -136,7 +155,10 @@ function renderCharacterGrid(subCat) {
         ${chars.map((ch, i) => `
           <div class="character-card" style="--delay: ${i * 0.05}s" onclick="window.__app.openCharacter('${ch.id}')">
             <div class="char-avatar">
-              <div class="char-avatar-inner">${ch.name.charAt(0)}</div>
+              ${ch.avatar
+                ? `<img class="char-avatar-img" src="${ch.avatar}" alt="${ch.name}">`
+                : `<div class="char-avatar-inner">${ch.name.charAt(0)}</div>`
+              }
             </div>
             <div class="char-info">
              <div class="char-name">${ch.name}</div>
@@ -184,7 +206,10 @@ function renderCharacterGrid(subCat) {
             ${list.map((ch, i) => `
               <div class="character-card" style="--delay: ${i * 0.05}s" onclick="window.__app.openCharacter('${ch.id}')">
                 <div class="char-avatar">
-                  <div class="char-avatar-inner">${ch.name.charAt(0)}</div>
+                  ${ch.avatar
+                    ? `<img class="char-avatar-img" src="${ch.avatar}" alt="${ch.name}">`
+                    : `<div class="char-avatar-inner">${ch.name.charAt(0)}</div>`
+                  }
                 </div>
                 <div class="char-info">
                  <div class="char-name">${ch.name}</div>
@@ -251,8 +276,11 @@ function renderCharacterGrid(subCat) {
         </button>
         <div class="modal-body">
           <div class="modal-top">
-            <div class="modal-avatar">
-              <div class="modal-avatar-inner">${ch.name.charAt(0)}</div>
+            <div class="modal-avatar" ${ch.avatar ? `onclick="event.stopPropagation(); window.__app.openLightbox('avatar_${ch.id}', null)" style="cursor: pointer;"` : ''}>
+              ${ch.avatar
+                ? `<img class="modal-avatar-img" src="${ch.avatar}" alt="${ch.name}">`
+                : `<div class="modal-avatar-inner">${ch.name.charAt(0)}</div>`
+              }
             </div>
             <div class="modal-title-area">
               <div class="modal-char-title">${ch.title}</div>
@@ -285,6 +313,28 @@ function renderCharacterGrid(subCat) {
               </div>
             </div>
           ` : ''}
+          ${(() => {
+            const charFanarts = getFanartsForCharacter(ch.id);
+            if (charFanarts.length === 0) return '';
+            const previews = charFanarts.slice(0, 4);
+            return `
+              <div class="modal-fanart">
+                <h3 class="fanart-title">同人图</h3>
+                <div class="fanart-preview-grid">
+                  ${previews.map(fa => `
+                    <div class="fanart-preview-item" onclick="event.stopPropagation(); window.__app.openLightbox('${fa.id}', '${ch.id}')">
+                      <img src="${fa.src}" alt="${fa.desc}" loading="lazy">
+                    </div>
+                  `).join('')}
+                </div>
+                ${charFanarts.length > 0 ? `
+                  <button class="fanart-more-btn" onclick="event.stopPropagation(); window.__app.closeModal(); window.__app.openGallery('${ch.id}')">
+                    查看全部 ${charFanarts.length} 张 →
+                  </button>
+                ` : ''}
+              </div>
+            `;
+          })()}
         </div>
       </div>
     `;
@@ -317,6 +367,270 @@ function renderCharacterGrid(subCat) {
     }
   }
 
+  /* ========== 同人图辅助 ========== */
+  function findCharacterName(charId) {
+    for (const cat of NOVEL_DATA.categories) {
+      for (const sub of cat.subCategories) {
+        const ch = sub.characters.find(c => c.id === charId);
+        if (ch) return ch.name;
+      }
+    }
+    return charId;
+  }
+
+  function getFanartsForCharacter(charId) {
+    return (NOVEL_DATA.fanarts || []).filter(fa => fa.tags.includes(charId));
+  }
+
+  function renderFanartTagsHtml(tags) {
+    return tags.map(tid => {
+      const name = findCharacterName(tid);
+      return `<span class="gallery-tag" onclick="event.stopPropagation(); window.__app.openGallery('${tid}')">${name}</span>`;
+    }).join('');
+  }
+
+  /* ========== 同人图集页面 ========== */
+  function renderGallery(charId, doPush = true) {
+    closeModal();
+    closeLightbox();
+    currentView = 'gallery';
+    if (doPush) {
+      history.pushState({ view: 'gallery', charId }, '', '#');
+    }
+
+    const charName = findCharacterName(charId);
+    const fanarts = getFanartsForCharacter(charId);
+
+    app.innerHTML = `
+      <div class="gallery-view animate-fadeIn">
+        <div class="gallery-header">
+          <button class="gallery-back-btn" onclick="window.__app.goHome()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+            返回
+          </button>
+          <h1 class="gallery-title">${charName}的同人图</h1>
+          <p class="gallery-subtitle">共 ${fanarts.length} 张</p>
+        </div>
+        ${fanarts.length > 0 ? `
+          <div class="gallery-grid">
+            ${fanarts.map((fa, i) => `
+              <div class="gallery-item" style="--delay: ${i * 0.06}s">
+                <div class="gallery-item-img-wrap" onclick="window.__app.openLightbox('${fa.id}', '${charId}')">
+                  <img class="gallery-item-img" src="${fa.src}" alt="${fa.desc}" loading="lazy">
+                </div>
+                <div class="gallery-item-info">
+                  <p class="gallery-item-desc">${fa.desc}</p>
+                  <div class="gallery-tags">
+                    ${renderFanartTagsHtml(fa.tags)}
+                  </div>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        ` : '<p class="gallery-empty">暂无同人图</p>'}
+      </div>
+    `;
+  }
+
+  /* ========== Lightbox 大图 ========== */
+  function openLightbox(fanartId, charId) {
+    // 如果是头像点击（avatar_xxx 格式）
+    if (fanartId.startsWith('avatar_')) {
+      const avatarCharId = fanartId.replace('avatar_', '');
+      let character = null;
+      for (const cat of NOVEL_DATA.categories) {
+        for (const sub of cat.subCategories) {
+          const found = sub.characters.find(c => c.id === avatarCharId);
+          if (found) { character = found; break; }
+        }
+        if (character) break;
+      }
+      if (character && character.avatar) {
+        // 创建临时的单图列表
+        currentLightboxList = [{
+          id: fanartId,
+          src: character.avatar,
+          desc: `${character.name}的头像`,
+          tags: [avatarCharId]
+        }];
+        currentLightboxIndex = 0;
+        showLightbox();
+      }
+      return;
+    }
+
+    currentLightboxList = charId ? getFanartsForCharacter(charId) : (NOVEL_DATA.fanarts || []);
+    currentLightboxIndex = currentLightboxList.findIndex(fa => fa.id === fanartId);
+    if (currentLightboxIndex === -1) currentLightboxIndex = 0;
+    showLightbox();
+  }
+
+  function showLightbox() {
+    closeLightbox();
+    const fa = currentLightboxList[currentLightboxIndex];
+    if (!fa) return;
+
+    const hasPrev = currentLightboxIndex > 0;
+    const hasNext = currentLightboxIndex < currentLightboxList.length - 1;
+
+    const lb = document.createElement('div');
+    lb.className = 'lightbox-overlay';
+    lb.id = 'lightboxOverlay';
+    lb.innerHTML = `
+      <button class="lightbox-close" onclick="window.__app.closeLightbox()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+      ${hasPrev ? `
+        <button class="lightbox-nav prev" onclick="window.__app.lightboxPrev()">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+      ` : ''}
+      ${hasNext ? `
+        <button class="lightbox-nav next" onclick="window.__app.lightboxNext()">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      ` : ''}
+      <div class="lightbox-img-wrap">
+        <img class="lightbox-img" src="${fa.src}" alt="${fa.desc}">
+      </div>
+      <div class="lightbox-info">
+        <p class="lightbox-desc">${fa.desc}</p>
+        <div class="lightbox-tags">
+          ${renderFanartTagsHtml(fa.tags)}
+        </div>
+      </div>
+    `;
+
+    // 点击背景关闭（但不是点击图片/按钮时）
+    lb.addEventListener('click', (e) => {
+      if (e.target === lb) closeLightbox();
+    });
+
+    document.body.appendChild(lb);
+    document.body.style.overflow = 'hidden';
+    requestAnimationFrame(() => lb.classList.add('show'));
+
+    // ESC & 方向键
+    const keyHandler = (e) => {
+      if (e.key === 'Escape') { closeLightbox(); document.removeEventListener('keydown', keyHandler); }
+      if (e.key === 'ArrowLeft' && currentLightboxIndex > 0) { lightboxPrev(); }
+      if (e.key === 'ArrowRight' && currentLightboxIndex < currentLightboxList.length - 1) { lightboxNext(); }
+    };
+    document.addEventListener('keydown', keyHandler);
+    lb._keyHandler = keyHandler;
+  }
+
+  function closeLightbox() {
+    const lb = document.getElementById('lightboxOverlay');
+    if (lb) {
+      if (lb._keyHandler) document.removeEventListener('keydown', lb._keyHandler);
+      lb.classList.remove('show');
+      setTimeout(() => {
+        lb.remove();
+        // 只有没有其他弹窗时才恢复滚动
+        if (!document.getElementById('characterModal')) {
+          document.body.style.overflow = '';
+        }
+      }, 300);
+    }
+  }
+
+  function lightboxPrev() {
+    if (currentLightboxIndex > 0) {
+      currentLightboxIndex--;
+      showLightbox();
+    }
+  }
+
+  function lightboxNext() {
+    if (currentLightboxIndex < currentLightboxList.length - 1) {
+      currentLightboxIndex++;
+      showLightbox();
+    }
+  }
+
+  /* ========== 搜索功能 ========== */
+  function searchCharacters(keyword) {
+    if (!keyword || !keyword.trim()) {
+      searchResults = [];
+      return;
+    }
+
+    const kw = keyword.trim().toLowerCase();
+    searchResults = [];
+
+    for (const cat of NOVEL_DATA.categories) {
+      for (const sub of cat.subCategories) {
+        for (const ch of sub.characters) {
+          if (ch.name.toLowerCase().includes(kw)) {
+            searchResults.push({
+              character: ch,
+              category: cat,
+              subCategory: sub
+            });
+          }
+        }
+      }
+    }
+
+    renderSearchResults();
+  }
+
+  function renderSearchResults() {
+    const searchBox = document.getElementById('searchBox');
+    const dropdown = document.getElementById('searchDropdown');
+
+    if (!searchBox || !dropdown) return;
+
+    if (searchResults.length === 0) {
+      dropdown.style.display = 'none';
+      return;
+    }
+
+    dropdown.innerHTML = searchResults.map(result => {
+      const { character, category, subCategory } = result;
+      const groupText = character.group ? ` - ${character.group}` : '';
+      const path = `${category.name} - ${subCategory.name}${groupText}`;
+
+      return `
+        <div class="search-result-item" onclick="window.__app.selectSearchResult('${character.id}')">
+          <div class="search-result-avatar">
+            ${character.avatar
+              ? `<img src="${character.avatar}" alt="${character.name}">`
+              : `<div class="search-result-avatar-text">${character.name.charAt(0)}</div>`
+            }
+          </div>
+          <div class="search-result-info">
+            <div class="search-result-name">${character.name}</div>
+            <div class="search-result-path">${path}</div>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    dropdown.style.display = 'block';
+  }
+
+  function selectSearchResult(charId) {
+    const searchBox = document.getElementById('searchBox');
+    const dropdown = document.getElementById('searchDropdown');
+
+    if (searchBox) searchBox.value = '';
+    if (dropdown) dropdown.style.display = 'none';
+    searchResults = [];
+
+    openCharacter(charId);
+  }
+
+  function clearSearch() {
+    const searchBox = document.getElementById('searchBox');
+    const dropdown = document.getElementById('searchDropdown');
+
+    if (searchBox) searchBox.value = '';
+    if (dropdown) dropdown.style.display = 'none';
+    searchResults = [];
+  }
+
   function goHome() {
     history.pushState({ view: 'home' }, '', '#');
     renderHome();
@@ -328,7 +642,14 @@ function renderCharacterGrid(subCat) {
     goHome,
     switchSub,
     openCharacter,
-    closeModal
+    closeModal,
+    openGallery: (charId) => renderGallery(charId),
+    openLightbox,
+    closeLightbox,
+    lightboxPrev,
+    lightboxNext,
+    searchCharacters,
+    selectSearchResult
   };
 
   // 启动
