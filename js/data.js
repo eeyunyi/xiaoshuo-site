@@ -24,7 +24,7 @@ window.NOVEL_DATA = {
               "title": "涂州姜家",
               "gender": "女",
               "group": "姜家宗族",
-              "avatar": "images/0001.png",
+              "avatar": "",
               "desc": "宅居在家、爱看话本的怪病独女，传闻与人说话超十个字会晕倒。",
               "attributes": {
                 "年龄": "17",
@@ -76,7 +76,7 @@ window.NOVEL_DATA = {
               "title": "涂州姜家",
               "gender": "男",
               "group": "姜家弟子",
-              "avatar": "images/0002.png",
+              "avatar": "",
               "desc": "姜清竹的大弟子，姜家大师兄，为人谦逊有礼，人称【凤箫君子】。",
               "attributes": {
                 "年龄": "29",
@@ -113,7 +113,7 @@ window.NOVEL_DATA = {
               "title": "涂州姜家",
               "gender": "女",
               "group": "姜家弟子",
-              "avatar": "images/0003.png",
+              "avatar": "",
               "desc": "涂州第一美人，因相貌脱俗而在各大仙门追求者众多，然为人淡漠冰冷。",
               "attributes": {
                 "年龄": "24",
@@ -591,7 +591,7 @@ window.NOVEL_DATA = {
                   "charId": "0081"
                 }
               ],
-              "avatar": "images/0016.png"
+              "avatar": ""
             },
             {
               "id": "0017",
@@ -1444,7 +1444,7 @@ window.NOVEL_DATA = {
                   "charId": "0102"
                 }
               ],
-              "avatar": "images/0047.png"
+              "avatar": ""
             },
             {
               "id": "0048",
@@ -1735,7 +1735,7 @@ window.NOVEL_DATA = {
               },
               "relations": [],
               "group": "玄阳宗修士",
-              "avatar": "images/0059.png"
+              "avatar": ""
             },
             {
               "id": "0060",
@@ -1964,7 +1964,7 @@ window.NOVEL_DATA = {
               },
               "relations": [],
               "group": "水脉",
-              "avatar": "images/0072.png"
+              "avatar": ""
             },
             {
               "id": "0073",
@@ -1980,7 +1980,7 @@ window.NOVEL_DATA = {
               },
               "relations": [],
               "group": "水脉",
-              "avatar": "images/0073.png"
+              "avatar": ""
             },
             {
               "id": "0074",
@@ -1996,7 +1996,7 @@ window.NOVEL_DATA = {
               },
               "relations": [],
               "group": "东渊之将",
-              "avatar": "images/0074.png"
+              "avatar": ""
             },
             {
               "id": "0075",
@@ -2012,7 +2012,7 @@ window.NOVEL_DATA = {
               },
               "relations": [],
               "group": "东渊之将",
-              "avatar": "images/0075.png"
+              "avatar": ""
             },
             {
               "id": "0076",
@@ -2028,7 +2028,7 @@ window.NOVEL_DATA = {
               },
               "relations": [],
               "group": "东渊之将",
-              "avatar": "images/0076.png"
+              "avatar": ""
             },
             {
               "id": "0077",
@@ -2044,7 +2044,7 @@ window.NOVEL_DATA = {
               },
               "relations": [],
               "group": "东渊之将",
-              "avatar": "images/0077.png"
+              "avatar": ""
             },
             {
               "id": "0078",
@@ -2131,7 +2131,7 @@ window.NOVEL_DATA = {
               },
               "relations": [],
               "group": "土脉",
-              "avatar": "images/0082.png"
+              "avatar": ""
             },
             {
               "id": "0083",
@@ -2162,7 +2162,7 @@ window.NOVEL_DATA = {
               },
               "relations": [],
               "group": "北渊之将",
-              "avatar": "images/0084.png"
+              "avatar": ""
             },
             {
               "id": "0085",
@@ -2178,7 +2178,7 @@ window.NOVEL_DATA = {
               },
               "relations": [],
               "group": "北渊之将",
-              "avatar": "images/0085.png"
+              "avatar": ""
             },
             {
               "id": "0086",
@@ -2209,7 +2209,7 @@ window.NOVEL_DATA = {
               },
               "relations": [],
               "group": "土脉",
-              "avatar": "images/0087.png"
+              "avatar": ""
             }
           ]
         },
@@ -2236,7 +2236,7 @@ window.NOVEL_DATA = {
               },
               "relations": [],
               "group": "火脉",
-              "avatar": "images/0088.png"
+              "avatar": ""
             },
             {
               "id": "0089",
@@ -2252,7 +2252,7 @@ window.NOVEL_DATA = {
               },
               "relations": [],
               "group": "火脉",
-              "avatar": "images/0089.png"
+              "avatar": ""
             },
             {
               "id": "0090",
@@ -2268,7 +2268,7 @@ window.NOVEL_DATA = {
               },
               "relations": [],
               "group": "火脉",
-              "avatar": "images/0090.png"
+              "avatar": ""
             },
             {
               "id": "0091",
@@ -2299,7 +2299,7 @@ window.NOVEL_DATA = {
               },
               "relations": [],
               "group": "西渊之将",
-              "avatar": "images/0092.png"
+              "avatar": ""
             },
             {
               "id": "0093",
@@ -2356,7 +2356,7 @@ window.NOVEL_DATA = {
               },
               "relations": [],
               "group": "风脉",
-              "avatar": "images/0095.png"
+              "avatar": ""
             },
             {
               "id": "0096",
@@ -2372,7 +2372,7 @@ window.NOVEL_DATA = {
               },
               "relations": [],
               "group": "风脉",
-              "avatar": "images/0096.png"
+              "avatar": ""
             },
             {
               "id": "0097",
@@ -2388,7 +2388,7 @@ window.NOVEL_DATA = {
               },
               "relations": [],
               "group": "南渊之将",
-              "avatar": "images/0097.png"
+              "avatar": ""
             },
             {
               "id": "0098",
@@ -2577,7 +2577,7 @@ window.NOVEL_DATA = {
               },
               "relations": [],
               "group": "战神",
-              "avatar": "images/0108.png"
+              "avatar": ""
             },
             {
               "id": "0109",
@@ -2593,7 +2593,7 @@ window.NOVEL_DATA = {
               },
               "relations": [],
               "group": "战神",
-              "avatar": "images/0109.png"
+              "avatar": ""
             },
             {
               "id": "0110",
@@ -2624,7 +2624,7 @@ window.NOVEL_DATA = {
               },
               "relations": [],
               "group": "战神",
-              "avatar": "images/0111.png"
+              "avatar": ""
             },
             {
               "id": "0112",
@@ -3312,7 +3312,7 @@ window.NOVEL_DATA = {
                 "武器": ""
               },
               "relations": [],
-              "avatar": "images/0155.png"
+              "avatar": ""
             },
             {
               "id": "0156",
@@ -3327,7 +3327,7 @@ window.NOVEL_DATA = {
                 "武器": ""
               },
               "relations": [],
-              "avatar": "images/0156.png"
+              "avatar": ""
             },
             {
               "id": "0157",
@@ -3370,124 +3370,158 @@ window.NOVEL_DATA = {
     }
   ],
   "fanarts": [
-   {
-  "id": "fa_jiangxiaoman_001",
-  "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/001.png",
-  "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/001.png",
-  "desc": "吹笛少女",
-  "tags": ["0001"]
-},
-{
-  "id": "fa_jiangxiaoman_002",
-  "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/002.png",
-  "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/002.png",
-  "desc": "玩水少女",
-  "tags": ["0001"]
-},
-{
-  "id": "fa_jiangxiaoman_003",
-  "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/003.jpg",
-  "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/003.jpg",
-  "desc": "吃荔枝么",
-  "tags": ["0001"]
-},
-{
-  "id": "fa_jiangxiaoman_004",
-  "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/004.jpg",
-  "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/004.jpg",
-  "desc": "头像",
-  "tags": ["0001"]
-},
-{
-  "id": "fa_jiangxiaoman_005",
-  "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/005.jpg",
-  "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/005.jpg",
-  "desc": "头像",
-  "tags": ["0001"]
-},
-{
-  "id": "fa_jiangxiaoman_006",
-  "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/006.png",
-  "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/006.png",
-  "desc": "头像",
-  "tags": ["0001"]
-},
-{
-  "id": "fa_jiangxiaoman_007",
-  "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/007.jpg",
-  "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/007.jpg",
-  "desc": "头像",
-  "tags": ["0001"]
-},
-{
-  "id": "fa_jiangxiaoman_008",
-  "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/008.png",
-  "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/008.png",
-  "desc": "姜小满",
-  "tags": ["0001"]
-},
-{
-  "id": "fa_jiangxiaoman_009",
-  "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/009.png",
-  "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/009.png",
-  "desc": "浸水",
-  "tags": ["0001"]
-},
-{
-  "id": "fa_jiangxiaoman_010",
-  "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/010.png",
-  "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/010.png",
-  "desc": "傲娇少女",
-  "tags": ["0001"]
-},
-{
-  "id": "fa_jiangxiaoman_011",
-  "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/011.png",
-  "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/011.png",
-  "desc": "白切黑",
-  "tags": ["0001"]
-},
-{
-  "id": "fa_jiangxiaoman_012",
-  "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/012.jpg",
-  "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/012.jpg",
-  "desc": "东魔君",
-  "tags": ["0001"]
-},
-{
-  "id": "fa_jiangxiaoman_013",
-  "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/013.jpg",
-  "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/013.jpg",
-  "desc": "东魔君（黑白）",
-  "tags": ["0001"]
-},
-{
-  "id": "fa_jiangxiaoman_014",
-  "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/014.png",
-  "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/014.png",
-  "desc": "冷脸萌",
-  "tags": ["0001"]
-},
-{
-  "id": "fa_jiangxiaoman_015",
-  "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/015.jpg",
-  "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/015.jpg",
-  "desc": "你在从中笑",
-  "tags": ["0001"]
-},
-{
-  "id": "fa_jiangxiaoman_016",
-  "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/016.png",
-  "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/016.png",
-  "desc": "姜小满",
-  "tags": ["0001"]
-},
-{
-  "id": "fa_jiangxiaoman_017",
-  "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/017.png",
-  "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/017.png",
-  "desc": "姜小满",
-  "tags": ["0001"]
-}
+    {
+      "id": "fa_jiangxiaoman_001",
+      "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/001.png",
+      "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/001.png",
+      "desc": "吹笛少女",
+      "tags": [
+        "0001"
+      ]
+    },
+    {
+      "id": "fa_jiangxiaoman_002",
+      "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/002.png",
+      "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/002.png",
+      "desc": "玩水少女",
+      "tags": [
+        "0001"
+      ]
+    },
+    {
+      "id": "fa_jiangxiaoman_003",
+      "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/003.jpg",
+      "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/003.jpg",
+      "desc": "吃荔枝么",
+      "tags": [
+        "0001"
+      ]
+    },
+    {
+      "id": "fa_jiangxiaoman_004",
+      "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/004.jpg",
+      "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/004.jpg",
+      "desc": "头像",
+      "tags": [
+        "0001"
+      ]
+    },
+    {
+      "id": "fa_jiangxiaoman_005",
+      "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/005.jpg",
+      "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/005.jpg",
+      "desc": "头像",
+      "tags": [
+        "0001"
+      ]
+    },
+    {
+      "id": "fa_jiangxiaoman_006",
+      "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/006.png",
+      "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/006.png",
+      "desc": "头像",
+      "tags": [
+        "0001"
+      ]
+    },
+    {
+      "id": "fa_jiangxiaoman_007",
+      "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/007.jpg",
+      "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/007.jpg",
+      "desc": "头像",
+      "tags": [
+        "0001"
+      ]
+    },
+    {
+      "id": "fa_jiangxiaoman_008",
+      "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/008.png",
+      "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/008.png",
+      "desc": "姜小满",
+      "tags": [
+        "0001"
+      ]
+    },
+    {
+      "id": "fa_jiangxiaoman_009",
+      "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/009.png",
+      "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/009.png",
+      "desc": "浸水",
+      "tags": [
+        "0001"
+      ]
+    },
+    {
+      "id": "fa_jiangxiaoman_010",
+      "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/010.png",
+      "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/010.png",
+      "desc": "傲娇少女",
+      "tags": [
+        "0001"
+      ]
+    },
+    {
+      "id": "fa_jiangxiaoman_011",
+      "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/011.png",
+      "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/011.png",
+      "desc": "白切黑",
+      "tags": [
+        "0001"
+      ]
+    },
+    {
+      "id": "fa_jiangxiaoman_012",
+      "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/012.jpg",
+      "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/012.jpg",
+      "desc": "东魔君",
+      "tags": [
+        "0001"
+      ]
+    },
+    {
+      "id": "fa_jiangxiaoman_013",
+      "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/013.jpg",
+      "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/013.jpg",
+      "desc": "东魔君（黑白）",
+      "tags": [
+        "0001"
+      ]
+    },
+    {
+      "id": "fa_jiangxiaoman_014",
+      "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/014.png",
+      "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/014.png",
+      "desc": "冷脸萌",
+      "tags": [
+        "0001"
+      ]
+    },
+    {
+      "id": "fa_jiangxiaoman_015",
+      "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/015.jpg",
+      "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/015.jpg",
+      "desc": "你在从中笑",
+      "tags": [
+        "0001"
+      ]
+    },
+    {
+      "id": "fa_jiangxiaoman_016",
+      "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/016.png",
+      "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/016.png",
+      "desc": "姜小满",
+      "tags": [
+        "0001"
+      ]
+    },
+    {
+      "id": "fa_jiangxiaoman_017",
+      "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/017.png",
+      "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/017.png",
+      "desc": "姜小满",
+      "tags": [
+        "0001"
+      ]
+    }
   ]
 };
