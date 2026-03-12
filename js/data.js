@@ -1762,14 +1762,20 @@ window.NOVEL_DATA = {
             "name": "裴卿卿",
             "title": "玄阳宗",
             "gender": "女",
-            "desc": "",
+            "desc": "七百年前的铜虎尊者。",
             "attributes": {
               "年龄": "",
               "身高": "",
-              "祖籍": "",
+              "祖籍": "皇都",
               "武器": ""
             },
-            "relations": [],
+            "relations": [
+          {
+                    "name": "金翎神女",
+                    "relation": "自己",
+                    "charId": "0109"
+          }
+],
             "group": "先代尊者"
           }
         ]
@@ -1810,7 +1816,13 @@ window.NOVEL_DATA = {
               "祖籍": "",
               "武器": ""
             },
-            "relations": [],
+            "relations": [
+          {
+                    "name": "菩提",
+                    "relation": "自己",
+                    "charId": "0085"
+          }
+],
             "group": "苍龙七星"
           },
           {
@@ -1964,7 +1976,7 @@ window.NOVEL_DATA = {
             "attributes": {
               "年龄": "5000+",
               "身高": "",
-              "祖籍": "",
+              "祖籍": "东渊",
               "武器": ""
             },
             "relations": [
@@ -2001,7 +2013,7 @@ window.NOVEL_DATA = {
             "attributes": {
               "年龄": "2000+",
               "身高": "",
-              "祖籍": "",
+              "祖籍": "神山",
               "武器": ""
             },
             "relations": [
@@ -2049,14 +2061,35 @@ window.NOVEL_DATA = {
             "name": "吟涛",
             "title": "东渊",
             "gender": "女",
-            "desc": "擅长泡沫术，十杰将之八",
+            "desc": "擅长泡沫术，十杰将之八。",
             "attributes": {
               "年龄": "800+",
               "身高": "",
-              "祖籍": "",
+              "祖籍": "东渊",
               "武器": ""
             },
-            "relations": [],
+            "relations": [
+          {
+                    "name": "姜小满",
+                    "relation": "主君/好友",
+                    "charId": "0001"
+          },
+          {
+                    "name": "霖光",
+                    "relation": "主君",
+                    "charId": "0072"
+          },
+          {
+                    "name": "菩提",
+                    "relation": "青梅竹马",
+                    "charId": "0085"
+          },
+          {
+                    "name": "月谣",
+                    "relation": "宿敌",
+                    "charId": "0075"
+          }
+],
             "group": "东渊之将",
             "avatar": ""
           },
@@ -2065,14 +2098,35 @@ window.NOVEL_DATA = {
             "name": "月谣",
             "title": "东渊",
             "gender": "女",
-            "desc": "东渊将领之一，喜穿男装，擅长近身战法",
+            "desc": "东渊将领之一，喜穿男装，擅长近身战法。",
             "attributes": {
               "年龄": "700+",
               "身高": "",
-              "祖籍": "",
+              "祖籍": "东渊",
               "武器": ""
             },
-            "relations": [],
+            "relations": [
+          {
+                    "name": "霖光",
+                    "relation": "主君",
+                    "charId": "0072"
+          },
+          {
+                    "name": "羽霜",
+                    "relation": "好友",
+                    "charId": "0073"
+          },
+          {
+                    "name": "天音",
+                    "relation": "好友",
+                    "charId": "0077"
+          },
+          {
+                    "name": "吟涛",
+                    "relation": "宿敌",
+                    "charId": "0074"
+          }
+],
             "group": "东渊之将",
             "avatar": ""
           },
@@ -2081,14 +2135,25 @@ window.NOVEL_DATA = {
             "name": "琴溪",
             "title": "东渊",
             "gender": "女",
-            "desc": "东渊医师，用温和外表掩盖好战之性，爱扎一条麻花辫，擅长双刀",
+            "desc": "东渊医师，用温和外表掩盖好战之性，爱扎一条麻花辫，擅长双刀。",
             "attributes": {
               "年龄": "700+",
               "身高": "",
-              "祖籍": "",
+              "祖籍": "东渊",
               "武器": ""
             },
-            "relations": [],
+            "relations": [
+          {
+                    "name": "姜小满",
+                    "relation": "主君/好友",
+                    "charId": "0001"
+          },
+          {
+                    "name": "霖光",
+                    "relation": "主君",
+                    "charId": "0072"
+          }
+],
             "group": "东渊之将",
             "avatar": ""
           },
@@ -2097,14 +2162,35 @@ window.NOVEL_DATA = {
             "name": "天音",
             "title": "东渊",
             "gender": "女",
-            "desc": "东渊将领之一",
+            "desc": "东渊将领之一。",
             "attributes": {
               "年龄": "600+",
               "身高": "",
-              "祖籍": "",
+              "祖籍": "东渊",
               "武器": ""
             },
-            "relations": [],
+            "relations": [
+          {
+                    "name": "霖光",
+                    "relation": "主君",
+                    "charId": "0072"
+          },
+          {
+                    "name": "月谣",
+                    "relation": "好友",
+                    "charId": "0075"
+          },
+          {
+                    "name": "璧浪",
+                    "relation": "青梅竹马",
+                    "charId": "0078"
+          },
+          {
+                    "name": "桃红",
+                    "relation": "自己",
+                    "charId": "0136"
+          }
+],
             "group": "东渊之将",
             "avatar": ""
           },
@@ -2113,14 +2199,25 @@ window.NOVEL_DATA = {
             "name": "璧浪",
             "title": "东渊",
             "gender": "男",
-            "desc": "东渊第九军阵副将",
+            "desc": "东渊第九军阵副将。",
             "attributes": {
               "年龄": "600+",
               "身高": "",
-              "祖籍": "",
+              "祖籍": "东北渊交接",
               "武器": ""
             },
-            "relations": [],
+            "relations": [
+          {
+                    "name": "霖光",
+                    "relation": "主君",
+                    "charId": "0072"
+          },
+          {
+                    "name": "天音",
+                    "relation": "青梅竹马",
+                    "charId": "0077"
+          }
+],
             "group": "东渊之将"
           },
           {
@@ -2128,14 +2225,20 @@ window.NOVEL_DATA = {
             "name": "卷雨",
             "title": "东渊",
             "gender": "女",
-            "desc": "东渊君霖光的好友兼左膀右臂",
+            "desc": "海灵，东渊君霖光的好友兼左膀右臂。",
             "attributes": {
               "年龄": "4000+",
               "身高": "",
-              "祖籍": "",
+              "祖籍": "东渊",
               "武器": ""
             },
-            "relations": [],
+            "relations": [
+          {
+                    "name": "霖光",
+                    "relation": "主君/挚友",
+                    "charId": "0072"
+          }
+],
             "group": "已故将领"
           },
           {
@@ -2147,7 +2250,7 @@ window.NOVEL_DATA = {
             "attributes": {
               "年龄": "3000+",
               "身高": "",
-              "祖籍": "",
+              "祖籍": "东渊",
               "武器": ""
             },
             "relations": [],
@@ -2162,7 +2265,7 @@ window.NOVEL_DATA = {
             "attributes": {
               "年龄": "3000+",
               "身高": "",
-              "祖籍": "",
+              "祖籍": "东渊",
               "武器": ""
             },
             "relations": [],
@@ -2230,7 +2333,7 @@ window.NOVEL_DATA = {
             "attributes": {
               "年龄": "10000+",
               "身高": "",
-              "祖籍": "",
+              "祖籍": "北渊",
               "武器": ""
             },
             "relations": [
@@ -2268,14 +2371,30 @@ window.NOVEL_DATA = {
             "name": "岩玦",
             "title": "北渊",
             "gender": "男",
-            "desc": "",
+            "desc": "忠心耿耿的左山灵，十杰将之一。",
             "attributes": {
               "年龄": "9000+",
               "身高": "",
-              "祖籍": "",
+              "祖籍": "神山",
               "武器": ""
             },
-            "relations": [],
+            "relations": [
+          {
+                    "name": "归尘",
+                    "relation": "主君",
+                    "charId": "0082"
+          },
+          {
+                    "name": "凌司辰",
+                    "relation": "少主",
+                    "charId": "0016"
+          },
+          {
+                    "name": "烬天",
+                    "relation": "好友",
+                    "charId": "0089"
+          }
+],
             "group": "土脉"
           },
           {
@@ -2283,11 +2402,11 @@ window.NOVEL_DATA = {
             "name": "刺鸮",
             "title": "北渊",
             "gender": "男",
-            "desc": "",
+            "desc": "北渊黑鸾，四鸾出生顺序第四，十杰将之六。",
             "attributes": {
               "年龄": "2000+",
               "身高": "",
-              "祖籍": "",
+              "祖籍": "神山",
               "武器": ""
             },
             "relations": [
@@ -2325,11 +2444,11 @@ window.NOVEL_DATA = {
             "name": "菩提",
             "title": "北渊",
             "gender": "男",
-            "desc": "",
+            "desc": "温和不喜争斗的北渊医师，十杰将之十。",
             "attributes": {
               "年龄": "700+",
               "身高": "",
-              "祖籍": "",
+              "祖籍": "北渊",
               "武器": ""
             },
             "relations": [
@@ -2487,14 +2606,25 @@ window.NOVEL_DATA = {
             "name": "烬天",
             "title": "西渊",
             "gender": "男",
-            "desc": "",
+            "desc": "右山灵，十杰将之二。",
             "attributes": {
-              "年龄": "",
+              "年龄": "7000+",
               "身高": "",
-              "祖籍": "",
+              "祖籍": "神山",
               "武器": ""
             },
-            "relations": [],
+            "relations": [
+          {
+                    "name": "幽荧",
+                    "relation": "主君",
+                    "charId": "0092"
+          },
+          {
+                    "name": "岩玦",
+                    "relation": "好友",
+                    "charId": "0083"
+          }
+],
             "group": "火脉",
             "avatar": ""
           },
@@ -2503,14 +2633,45 @@ window.NOVEL_DATA = {
             "name": "灾凤",
             "title": "西渊",
             "gender": "女",
-            "desc": "",
+            "desc": "西渊赤鸾，四鸾出生顺序第一，十杰将之三。",
             "attributes": {
-              "年龄": "",
+              "年龄": "2000+",
               "身高": "",
-              "祖籍": "",
+              "祖籍": "神山",
               "武器": ""
             },
-            "relations": [],
+            "relations": [
+          {
+                    "name": "千炀",
+                    "relation": "主君",
+                    "charId": "0088"
+          },
+          {
+                    "name": "羽霜",
+                    "relation": "妹妹",
+                    "charId": "0073"
+          },
+          {
+                    "name": "风鹰",
+                    "relation": "弟弟",
+                    "charId": "0096"
+          },
+          {
+                    "name": "刺鸮",
+                    "relation": "弟弟",
+                    "charId": "0084"
+          },
+          {
+                    "name": "赤狐",
+                    "relation": "下属",
+                    "charId": "0091"
+          },
+          {
+                    "name": "翟皇后",
+                    "relation": "自己",
+                    "charId": "0121"
+          }
+],
             "group": "火脉",
             "avatar": ""
           },
@@ -2519,14 +2680,30 @@ window.NOVEL_DATA = {
             "name": "赤狐",
             "title": "西渊",
             "gender": "男",
-            "desc": "",
+            "desc": "西渊的奇诡术士，十杰将之九。",
             "attributes": {
               "年龄": "",
               "身高": "",
-              "祖籍": "",
+              "祖籍": "西北渊交接",
               "武器": ""
             },
-            "relations": [],
+            "relations": [
+          {
+                    "name": "千炀",
+                    "relation": "主君",
+                    "charId": "0088"
+          },
+          {
+                    "name": "灾凤",
+                    "relation": "上司",
+                    "charId": "0090"
+          },
+          {
+                    "name": "狐仙姐姐",
+                    "relation": "自己",
+                    "charId": "0142"
+          }
+],
             "group": "西渊之将"
           },
           {
@@ -2591,11 +2768,11 @@ window.NOVEL_DATA = {
             "name": "飓衍",
             "title": "南渊",
             "gender": "男",
-            "desc": "",
+            "desc": "南渊的君主，风脉之主，最年轻的渊主。",
             "attributes": {
               "年龄": "1000+",
               "身高": "",
-              "祖籍": "",
+              "祖籍": "南渊",
               "武器": ""
             },
             "relations": [],
@@ -3004,7 +3181,7 @@ window.NOVEL_DATA = {
               "武器": ""
             },
             "relations": [],
-            "group": "「兵器」",
+            "group": "战神/法相",
             "avatar": ""
           }
         ]
@@ -3677,7 +3854,7 @@ window.NOVEL_DATA = {
     ]
   }
 ],
-  "avatarIds": ["0001","0002","0003","0016","0017","0047","0059","0072","0073","0074","0075","0076","0077","0082","0084","0085","0087","0088","0089","0090","0092","0095","0096","0097","0108","0109","0111","0155","0156"],
+  "avatarIds": ["0001","0002","0003","0016","0017","0047","0059","0072","0073","0074","0075","0076","0077","0082","0084","0085","0087","0088","0089","0090","0092","0095","0096","0097","0108","0109","0111","0155","0156","0160","0161"],
   "fanarts": (function() {
     var _id = 0;
     var OSS_BASE = "fanart";
@@ -3736,6 +3913,20 @@ window.NOVEL_DATA = {
       fa("lingsichen/0007.png",   ["0016"], "凌司辰"),
       fa("lingsichen/0012.png",   ["0016"], "凌司辰"),
       fa("lingsichen/0011.png",   ["0016"], "凌司辰"),
+
+      // ===== 凌司辰（魔君） 单人 =====
+      fa("lingsichenheihua/0003.jpeg", ["0087"], "凌司辰（魔君）"),
+      fa("lingsichenheihua/0004.png",  ["0087"], "凌司辰（魔君）"),
+      fa("lingsichenheihua/0005.jpg",  ["0087"], "凌司辰（魔君）"),
+      fa("lingsichenheihua/0006.jpg",  ["0087"], "凌司辰（魔君）"),
+      fa("lingsichenheihua/0007.png",  ["0087"], "凌司辰（魔君）"),
+
+      // ===== 羽霜 单人 =====
+      fa("yushuang/0001.jpg",  ["0073"], "羽霜"),
+      fa("yushuang/0002.png",  ["0073"], "羽霜"),
+      fa("yushuang/0003.png",  ["0073"], "羽霜"),
+      fa("yushuang/0004.jpg",  ["0073"], "羽霜"),
+      fa("yushuang/0005.png",  ["0073"], "羽霜"),
 
       // ===== 满辰 双人 =====
       fa("manchen/nnsrabc.png",                      ["0001","0087"], "笑一笑啦"),
