@@ -1,6 +1,7 @@
 /**
  * 小说角色百科 - 应用逻辑
  */
+
 (function () {
   let currentView = 'home'; // home | category | subcategory | gallery
   let currentCategoryId = null;
@@ -26,16 +27,85 @@
 }
 
 
-  function getAvatarSrc(ch) {
-    if (!ch) return 'images/placeholder.png';
-    if (ch.avatar && String(ch.avatar).trim()) return ch.avatar;
-    if (ch.id && String(ch.id).trim()) return `images/${String(ch.id).trim()}.png`;
-    return 'images/placeholder.png';
+// ===== 图片资源配置 =====
+const ASSET_CONFIG = {
+  avatarBaseUrl: 'https://nvergu.oss-cn-beijing.aliyuncs.com/avatars',
+  fanartThumbBaseUrl: 'https://nvergu.oss-cn-beijing.aliyuncs.com/fanart/thumbs',
+  fanartFullBaseUrl: 'https://nvergu.oss-cn-beijing.aliyuncs.com/fanart/full',
+  placeholder: 'images/placeholder.png'
+};
+
+function normalizePath(path) {
+  return String(path || '').trim().replace(/\/+$/, '');
+}
+
+function getAvatarSrc(ch) {
+  if (!ch) return ASSET_CONFIG.placeholder;
+
+  if (ch.avatar && String(ch.avatar).trim()) {
+    return String(ch.avatar).trim();
   }
 
-  function renderAvatarImage(ch, cls, alt) {
-    return `<img class="${cls}" src="${getAvatarSrc(ch)}" alt="${alt || (ch?.name || '')}" onerror="this.onerror=null;this.src='images/placeholder.png'">`;
+  if (ch.id && String(ch.id).trim()) {
+    const id = String(ch.id).trim();
+    return `${normalizePath(ASSET_CONFIG.avatarBaseUrl)}/${id}.png`;
   }
+
+  return ASSET_CONFIG.placeholder;
+}
+
+function renderAvatarImage(ch, cls, alt) {
+  return `<img class="${cls}" src="${getAvatarSrc(ch)}" alt="${alt || (ch?.name || '')}" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='${ASSET_CONFIG.placeholder}'">`;
+}
+
+function findCharacterByName(name) {
+  const target = String(name || '').trim();
+  if (!target) return null;
+
+  for (const cat of NOVEL_DATA.categories) {
+    for (const sub of cat.subCategories) {
+      const found = sub.characters.find(c => String(c.name || '').trim() === target);
+      if (found) return found;
+    }
+  }
+  return null;
+}
+
+function getFanartThumbSrc(fa) {
+  if (!fa) return ASSET_CONFIG.placeholder;
+
+  if (fa.thumb && String(fa.thumb).trim()) {
+    return String(fa.thumb).trim();
+  }
+
+  if (fa.src && String(fa.src).trim()) {
+    return String(fa.src).trim();
+  }
+
+  if (fa.fileName && String(fa.fileName).trim()) {
+    return `${normalizePath(ASSET_CONFIG.fanartThumbBaseUrl)}/${String(fa.fileName).trim()}`;
+  }
+
+  return ASSET_CONFIG.placeholder;
+}
+
+function getFanartFullSrc(fa) {
+  if (!fa) return ASSET_CONFIG.placeholder;
+
+  if (fa.full && String(fa.full).trim()) {
+    return String(fa.full).trim();
+  }
+
+  if (fa.src && String(fa.src).trim()) {
+    return String(fa.src).trim();
+  }
+
+  if (fa.fileName && String(fa.fileName).trim()) {
+    return `${normalizePath(ASSET_CONFIG.fanartFullBaseUrl)}/${String(fa.fileName).trim()}`;
+  }
+
+  return ASSET_CONFIG.placeholder;
+}
 
   function findCharacterById(charId) {
     for (const cat of NOVEL_DATA.categories) {
@@ -314,17 +384,25 @@ function renderCharacterGrid(subCat) {
             <div class="modal-relations">
               <h3 class="relations-title">相关角色</h3>
               <div class="relations-grid">
-                ${ch.relations.map(r => {
-                  const relationChar = r.charId ? findCharacterById(r.charId) : null;
-                  return `
-                  <div class="relation-item" onclick="${r.charId ? `event.stopPropagation(); window.__app.openCharacter('${r.charId}')` : 'event.stopPropagation();'}">
-                    <div class="relation-avatar">
-                      ${relationChar ? renderAvatarImage(relationChar, 'modal-avatar-img', r.name) : `<img class="modal-avatar-img" src="images/placeholder.png" alt="${r.name}" onerror="this.onerror=null;this.src='images/placeholder.png'">`}
-                    </div>
-                    <div class="relation-name">${r.name}</div>
-                    <div class="relation-type">${r.relation}</div>
-                  </div>
-                `}).join('')}
+${ch.relations.map(r => {
+  let relationChar = r.charId ? findCharacterById(r.charId) : null;
+  if (!relationChar) {
+    relationChar = findCharacterByName(r.name);
+  }
+
+  const openTargetId = relationChar ? relationChar.id : null;
+
+  return `
+  <div class="relation-item" onclick="${openTargetId ? `event.stopPropagation(); window.__app.openCharacter('${openTargetId}')` : 'event.stopPropagation();'}">
+    <div class="relation-avatar">
+      ${relationChar
+        ? renderAvatarImage(relationChar, 'modal-avatar-img', r.name)
+        : `<img class="modal-avatar-img" src="${ASSET_CONFIG.placeholder}" alt="${r.name}" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='${ASSET_CONFIG.placeholder}'">`}
+    </div>
+    <div class="relation-name">${r.name}</div>
+    <div class="relation-type">${r.relation}</div>
+  </div>
+`}).join('')}
               </div>
             </div>
           ` : ''}
@@ -338,7 +416,7 @@ function renderCharacterGrid(subCat) {
                 <div class="fanart-preview-grid">
                   ${previews.map(fa => `
                     <div class="fanart-preview-item" onclick="event.stopPropagation(); window.__app.openLightbox('${fa.id}', '${ch.id}')">
-                      <img src="${fa.src}" alt="${fa.desc}" loading="lazy">
+                      <img src="${getFanartThumbSrc(fa)}" alt="${fa.desc}" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='${ASSET_CONFIG.placeholder}'">
                     </div>
                   `).join('')}
                 </div>
@@ -431,7 +509,7 @@ function renderCharacterGrid(subCat) {
             ${fanarts.map((fa, i) => `
               <div class="gallery-item" style="--delay: ${i * 0.06}s">
                 <div class="gallery-item-img-wrap" onclick="window.__app.openLightbox('${fa.id}', '${charId}')">
-                  <img class="gallery-item-img" src="${fa.src}" alt="${fa.desc}" loading="lazy">
+                  <img class="gallery-item-img" src="${getFanartThumbSrc(fa)}" alt="${fa.desc}" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='${ASSET_CONFIG.placeholder}'">
                 </div>
                 <div class="gallery-item-info">
                   <p class="gallery-item-desc">${fa.desc}</p>
@@ -507,7 +585,7 @@ function renderCharacterGrid(subCat) {
         </button>
       ` : ''}
       <div class="lightbox-img-wrap">
-        <img class="lightbox-img" src="${fa.src}" alt="${fa.desc}">
+        <img class="lightbox-img" src="${getFanartFullSrc(fa)}" alt="${fa.desc}" decoding="async" onerror="this.onerror=null;this.src='${ASSET_CONFIG.placeholder}'">
       </div>
       <div class="lightbox-info">
         <p class="lightbox-desc">${fa.desc}</p>

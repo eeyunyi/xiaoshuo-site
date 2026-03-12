@@ -3370,55 +3370,124 @@ window.NOVEL_DATA = {
     }
   ],
   "fanarts": [
-    {
-      "id": "fa001",
-      "src": "images/0001.png",
-      "desc": "姜小满立绘",
-      "tags": [
-        "0001"
-      ]
-    },
-    {
-      "id": "fa002",
-      "src": "images/0001_b.png",
-      "desc": "姜小满·怪病少女",
-      "tags": [
-        "0001"
-      ]
-    },
-    {
-      "id": "fa003",
-      "src": "images/0002.png",
-      "desc": "莫廉·凤箫君子",
-      "tags": [
-        "0002"
-      ]
-    },
-    {
-      "id": "fa004",
-      "src": "images/0003.png",
-      "desc": "洛雪茗·涂州第一美人",
-      "tags": [
-        "0003"
-      ]
-    },
-    {
-      "id": "fa005",
-      "src": "images/0001.png",
-      "desc": "姜小满与莫廉·师妹与大师兄",
-      "tags": [
-        "0001",
-        "0002"
-      ]
-    },
-    {
-      "id": "fa006",
-      "src": "images/0002.png",
-      "desc": "莫廉与洛雪茗·箫音双影",
-      "tags": [
-        "0002",
-        "0003"
-      ]
-    }
+   {
+  "id": "fa_jiangxiaoman_001",
+  "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/001.png",
+  "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/001.png",
+  "desc": "吹笛少女",
+  "tags": ["0001"]
+},
+{
+  "id": "fa_jiangxiaoman_002",
+  "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/002.png",
+  "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/002.png",
+  "desc": "玩水少女",
+  "tags": ["0001"]
+},
+{
+  "id": "fa_jiangxiaoman_003",
+  "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/003.jpg",
+  "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/003.jpg",
+  "desc": "吃荔枝么",
+  "tags": ["0001"]
+},
+{
+  "id": "fa_jiangxiaoman_004",
+  "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/004.jpg",
+  "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/004.jpg",
+  "desc": "头像",
+  "tags": ["0001"]
+},
+{
+  "id": "fa_jiangxiaoman_005",
+  "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/005.jpg",
+  "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/005.jpg",
+  "desc": "头像",
+  "tags": ["0001"]
+},
+{
+  "id": "fa_jiangxiaoman_006",
+  "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/006.png",
+  "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/006.png",
+  "desc": "头像",
+  "tags": ["0001"]
+},
+{
+  "id": "fa_jiangxiaoman_007",
+  "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/007.jpg",
+  "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/007.jpg",
+  "desc": "头像",
+  "tags": ["0001"]
+},
+{
+  "id": "fa_jiangxiaoman_008",
+  "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/008.png",
+  "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/008.png",
+  "desc": "姜小满",
+  "tags": ["0001"]
+},
+{
+  "id": "fa_jiangxiaoman_009",
+  "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/009.png",
+  "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/009.png",
+  "desc": "浸水",
+  "tags": ["0001"]
+},
+{
+  "id": "fa_jiangxiaoman_010",
+  "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/010.png",
+  "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/010.png",
+  "desc": "傲娇少女",
+  "tags": ["0001"]
+},
+{
+  "id": "fa_jiangxiaoman_011",
+  "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/011.png",
+  "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/011.png",
+  "desc": "白切黑",
+  "tags": ["0001"]
+},
+{
+  "id": "fa_jiangxiaoman_012",
+  "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/012.jpg",
+  "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/012.jpg",
+  "desc": "东魔君",
+  "tags": ["0001"]
+},
+{
+  "id": "fa_jiangxiaoman_013",
+  "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/013.jpg",
+  "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/013.jpg",
+  "desc": "东魔君（黑白）",
+  "tags": ["0001"]
+},
+{
+  "id": "fa_jiangxiaoman_014",
+  "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/014.png",
+  "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/014.png",
+  "desc": "冷脸萌",
+  "tags": ["0001"]
+},
+{
+  "id": "fa_jiangxiaoman_015",
+  "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/015.jpg",
+  "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/015.jpg",
+  "desc": "你在从中笑",
+  "tags": ["0001"]
+},
+{
+  "id": "fa_jiangxiaoman_016",
+  "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/016.png",
+  "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/016.png",
+  "desc": "姜小满",
+  "tags": ["0001"]
+},
+{
+  "id": "fa_jiangxiaoman_017",
+  "thumb": "https://img.nvergu.com/fanart/jiangxiaoman/full/017.png",
+  "full": "https://img.nvergu.com/fanart/jiangxiaoman/full/017.png",
+  "desc": "姜小满",
+  "tags": ["0001"]
+}
   ]
 };
