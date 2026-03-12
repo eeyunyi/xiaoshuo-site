@@ -651,10 +651,14 @@ ${ch.relations.map(r => {
     });
   }
 
+  var _masonryTimer = null;
   function queueMasonryLayout() {
-    window.requestAnimationFrame(() => {
-      document.querySelectorAll('[data-masonry-grid]').forEach(setupMasonryGrid);
-    });
+    if (_masonryTimer) clearTimeout(_masonryTimer);
+    _masonryTimer = setTimeout(function() {
+      window.requestAnimationFrame(function() {
+        document.querySelectorAll('[data-masonry-grid]').forEach(setupMasonryGrid);
+      });
+    }, 80);
   }
 
   function setupMasonryGrid(grid) {
@@ -762,6 +766,9 @@ ${ch.relations.map(r => {
     `;
 
     queueMasonryLayout();
+    setTimeout(queueMasonryLayout, 300);
+    setTimeout(queueMasonryLayout, 800);
+    setTimeout(queueMasonryLayout, 2000);
   }
 
   /* ========== Lightbox 大图 ========== */

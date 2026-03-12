@@ -3884,8 +3884,8 @@ window.NOVEL_DATA = {
       fa("jiangxiaoman/full/009.png",  ["0001"], "浸水"),
       fa("jiangxiaoman/full/010.png",  ["0001"], "傲娇少女"),
       fa("jiangxiaoman/full/011.png",  ["0001"], "白切黑"),
-      fa("jiangxiaoman/full/012.jpg",  ["0001"], "东魔君"),
-      fa("jiangxiaoman/full/013.jpg",  ["0001"], "东魔君（黑白）"),
+      fa("jiangxiaoman/full/012.jpg",  ["0160"], "东魔君"),
+      fa("jiangxiaoman/full/013.jpg",  ["0160"], "东魔君（黑白）"),
       fa("jiangxiaoman/full/014.png",  ["0001"], "冷脸萌"),
       fa("jiangxiaoman/full/015.jpg",  ["0001"], "你在从中笑"),
       fa("jiangxiaoman/full/016.png",  ["0001"], "姜小满"),
@@ -3913,8 +3913,6 @@ window.NOVEL_DATA = {
       fa("lingsichen/0007.png",   ["0016"], "凌司辰"),
       fa("lingsichen/0012.png",   ["0016"], "凌司辰"),
       fa("lingsichen/0011.png",   ["0016"], "凌司辰"),
-
-      // ===== 凌司辰（魔君） 单人 =====
       fa("lingsichenheihua/0003.jpeg", ["0087"], "凌司辰（魔君）"),
       fa("lingsichenheihua/0004.png",  ["0087"], "凌司辰（魔君）"),
       fa("lingsichenheihua/0005.jpg",  ["0087"], "凌司辰（魔君）"),
