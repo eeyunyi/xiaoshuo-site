@@ -1231,16 +1231,18 @@ body::before {
 }
 
 .gallery-grid.gallery-masonry {
-  column-count: 4;
-  column-gap: 20px;
+  --masonry-row-height: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-auto-rows: var(--masonry-row-height);
+  gap: 20px;
+  align-items: start;
 }
 
 .gallery-item {
-  display: inline-block;
   width: 100%;
-  margin: 0 0 20px;
+  margin: 0;
   break-inside: avoid;
-  -webkit-column-break-inside: avoid;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 18px;
@@ -1261,6 +1263,111 @@ body::before {
   cursor: pointer;
   position: relative;
   background: rgba(255,255,255,0.03);
+  min-height: 220px;
+}
+
+.asset-shell {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.asset-shell img.is-broken {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.asset-fallback {
+  position: absolute;
+  inset: 0;
+  display: none;
+}
+
+.asset-shell.is-missing .asset-fallback {
+  display: flex;
+}
+
+.avatar-asset-shell,
+.gallery-asset-shell {
+  width: 100%;
+  height: 100%;
+}
+
+.avatar-fallback {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255,255,255,0.12), transparent 38%),
+    linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.015));
+}
+
+.gallery-fallback {
+  min-height: 280px;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 18px;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255,255,255,0.12), transparent 34%),
+    linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.018) 62%, rgba(8,8,12,0.72) 100%);
+}
+
+.gallery-fallback::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), transparent 22%, transparent 68%, rgba(0,0,0,0.22));
+  pointer-events: none;
+}
+
+.gallery-fallback-mark {
+  width: 92px;
+  height: 92px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.12);
+  position: relative;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.14);
+}
+
+.gallery-fallback-mark::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 22px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  background: rgba(255,255,255,0.18);
+}
+
+.gallery-fallback-mark::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 12px;
+  width: 72px;
+  height: 34px;
+  border-radius: 999px 999px 18px 18px;
+  transform: translateX(-50%);
+  background: rgba(255,255,255,0.18);
+}
+
+.gallery-fallback-meta {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: right;
+}
+
+.gallery-fallback-label {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.5);
+}
+
+.gallery-fallback-tags {
+  font-size: 13px;
+  color: rgba(255,255,255,0.82);
 }
 
 .gallery-item-img-wrap::after {
@@ -1447,6 +1554,12 @@ body::before {
 }
 
 /* ===== 响应式补充 ===== */
+@media (max-width: 1024px) {
+  .gallery-grid.gallery-masonry {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 768px) {
   .fanart-preview-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1481,9 +1594,18 @@ body::before {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 640px) {
   .gallery-grid.gallery-masonry {
-    column-count: 3;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .gallery-item-img-wrap {
+    min-height: 190px;
+  }
+
+  .gallery-fallback {
+    min-height: 220px;
   }
 }
 
@@ -1707,7 +1829,7 @@ body::before {
 
 @media (max-width: 640px) {
   .gallery-grid.gallery-masonry {
-    column-count: 1;
+    grid-template-columns: 1fr;
   }
 
   .gallery-view {

@@ -35,7 +35,10 @@ const ASSET_CONFIG = {
   placeholder: 'images/placeholder.png',
   fanartThumbWidth: 720,
   fanartCardWidth: 640,
-  fanartQuality: 85
+  fanartQuality: 85,
+  avatarCardWidth: 400,
+  avatarModalWidth: 480,
+  avatarQuality: 85
 };
 
 function normalizePath(path) {
@@ -43,7 +46,13 @@ function normalizePath(path) {
 }
 
 function normalizeSegment(segment) {
-  return String(segment || '').trim().replace(/^\/+/, '').replace(/\/+$/g, '');
+  return String(segment || '')
+    .trim()
+    .replace(/^\/+/, '')
+    .replace(/\/+$/g, '')
+    .split('/')
+    .map(part => encodeURIComponent(part))
+    .join('/');
 }
 
 function isRemoteUrl(path) {
@@ -77,6 +86,12 @@ function getAvatarUrl(charId) {
   return buildCdnUrl(ASSET_CONFIG.avatarsDir, `${id.padStart(4, '0')}.png`);
 }
 
+function getAvatarThumbUrl(url, width) {
+  width = width || ASSET_CONFIG.avatarCardWidth;
+  if (!url || url === ASSET_CONFIG.placeholder) return url;
+  return buildAliyunImageUrl(url, { width: width, quality: ASSET_CONFIG.avatarQuality, mode: 'm_lfit' });
+}
+
 function getAvatarCandidates(ch) {
   if (!ch) return [ASSET_CONFIG.placeholder];
 
@@ -96,12 +111,11 @@ function getAvatarCandidates(ch) {
     candidates.push(buildCdnUrl(ASSET_CONFIG.avatarsDir, rawAvatar));
   }
 
-  candidates.push(ASSET_CONFIG.placeholder);
   return uniqueList(candidates);
 }
 
 function getAvatarSrc(ch) {
-  return getAvatarCandidates(ch)[0] || ASSET_CONFIG.placeholder;
+  return getAvatarCandidates(ch)[0] || '';
 }
 
 function getAssetFallbackAttr(candidates) {
@@ -111,30 +125,42 @@ function getAssetFallbackAttr(candidates) {
 
 function handleAssetFallback(img) {
   if (!img) return;
+  const shell = img.closest('.asset-shell');
   const raw = img.dataset.fallbacks || '';
-  if (!raw) {
-    img.onerror = null;
-    img.src = ASSET_CONFIG.placeholder;
-    return;
-  }
-
   const next = raw.split('|').filter(Boolean);
   const candidate = next.shift();
   img.dataset.fallbacks = next.join('|');
 
-  if (!candidate) {
-    img.onerror = null;
-    img.src = ASSET_CONFIG.placeholder;
+  if (candidate) {
+    if (shell) shell.classList.remove('is-missing');
+    img.src = candidate;
     return;
   }
 
-  img.src = candidate;
+  img.onerror = null;
+  img.removeAttribute('src');
+  img.classList.add('is-broken');
+  if (shell) shell.classList.add('is-missing');
 }
 
-function renderAvatarImage(ch, cls, alt) {
+function renderAvatarImage(ch, cls, alt, thumbWidth) {
   const candidates = getAvatarCandidates(ch);
-  const src = candidates[0] || ASSET_CONFIG.placeholder;
-  return `<img class="${cls}" src="${src}" alt="${alt || (ch?.name || '')}" loading="lazy" decoding="async"${getAssetFallbackAttr(candidates)} onerror="window.__app.handleAssetFallback(this)">`;
+  const rawSrc = candidates[0] || '';
+  var width = thumbWidth;
+  if (!width) {
+    if (cls.includes('gallery-hero')) width = ASSET_CONFIG.avatarModalWidth;
+    else if (cls.includes('modal')) width = ASSET_CONFIG.avatarModalWidth;
+    else width = ASSET_CONFIG.avatarCardWidth;
+  }
+  const src = rawSrc ? getAvatarThumbUrl(rawSrc, width) : '';
+  const missingClass = src ? '' : ' is-missing';
+  const imgClass = src ? cls : `${cls} is-broken`;
+  return `
+    <div class="asset-shell avatar-asset-shell${missingClass}" data-kind="avatar">
+      <img class="${imgClass}" src="${src}" alt="${alt || (ch?.name || '')}" loading="lazy" decoding="async"${getAssetFallbackAttr(candidates)} onerror="window.__app.handleAssetFallback(this)">
+      <div class="asset-fallback avatar-fallback" aria-hidden="true"></div>
+    </div>
+  `;
 }
 
 function stripAliyunProcess(url) {
@@ -189,11 +215,16 @@ function getFanartThumbUrl(fa, width = ASSET_CONFIG.fanartThumbWidth) {
 }
 
 function prepareNovelData() {
+  const avatarSet = new Set(NOVEL_DATA.avatarIds || []);
+
   for (const cat of (NOVEL_DATA.categories || [])) {
     for (const sub of (cat.subCategories || [])) {
       for (const ch of (sub.characters || [])) {
         if (!String(ch.avatar || '').trim()) {
-          ch.avatar = getAvatarUrl(ch.id);
+          if (avatarSet.has(ch.id)) {
+            ch.avatar = getAvatarUrl(ch.id);
+          }
+          // no avatar on OSS → leave empty, skip loading entirely
         }
       }
     }
@@ -204,10 +235,11 @@ function prepareNovelData() {
     return;
   }
 
-  NOVEL_DATA.fanarts = NOVEL_DATA.fanarts.map((fa) => {
+  NOVEL_DATA.fanarts = NOVEL_DATA.fanarts.map((fa, index) => {
     const original = getFanartOriginalUrl(fa);
     return {
       ...fa,
+      __order: index,
       path: String(fa.path || fa.fileName || '').trim(),
       full: original,
       src: original,
@@ -320,6 +352,8 @@ function getFanartFullSrc(fa) {
         </div>
       </div>
     `;
+
+    queueMasonryLayout();
   }
 
   /* ========== 分类页：子分类 + 角色列表 ========== */
@@ -362,6 +396,8 @@ function getFanartFullSrc(fa) {
         </div>
       </div>
     `;
+
+    queueMasonryLayout();
   }
 
 function renderCharacterGrid(subCat) {
@@ -388,6 +424,8 @@ function renderCharacterGrid(subCat) {
         `).join('')}
       </div>
     `;
+
+    queueMasonryLayout();
   }
 
   // ✅ 有 group：分组显示
@@ -602,8 +640,64 @@ ${ch.relations.map(r => {
     return charId;
   }
 
+  function sortFanartsByTagPriority(list) {
+    return [...(list || [])].sort((a, b) => {
+      const tagDiff = (a.tags?.length || 0) - (b.tags?.length || 0);
+      if (tagDiff !== 0) return tagDiff;
+
+      const orderA = Number.isFinite(a.__order) ? a.__order : 0;
+      const orderB = Number.isFinite(b.__order) ? b.__order : 0;
+      return orderA - orderB;
+    });
+  }
+
+  function queueMasonryLayout() {
+    window.requestAnimationFrame(() => {
+      document.querySelectorAll('[data-masonry-grid]').forEach(setupMasonryGrid);
+    });
+  }
+
+  function setupMasonryGrid(grid) {
+    if (!grid) return;
+
+    const computed = window.getComputedStyle(grid);
+    const rowHeight = parseFloat(computed.getPropertyValue('--masonry-row-height')) || 10;
+    const gap = parseFloat(computed.rowGap || computed.gap || 18) || 18;
+
+    grid.querySelectorAll('.gallery-item').forEach((item) => {
+      const imageWrap = item.querySelector('.gallery-item-img-wrap');
+      const info = item.querySelector('.gallery-item-info');
+      const fallback = item.querySelector('.gallery-fallback');
+      const mediaHeight = imageWrap ? imageWrap.getBoundingClientRect().height : (fallback ? fallback.getBoundingClientRect().height : 0);
+      const infoHeight = info ? info.getBoundingClientRect().height : 0;
+      const total = Math.max(mediaHeight + infoHeight, 220);
+      const span = Math.max(18, Math.ceil((total + gap) / (rowHeight + gap)));
+      item.style.gridRowEnd = `span ${span}`;
+    });
+  }
+
+  function renderFanartAsset(fa) {
+    const desc = fa?.desc || '';
+    const tagsLabel = (fa?.tags || []).map(findCharacterName).join(' · ');
+    return `
+      <div class="asset-shell gallery-asset-shell" data-kind="fanart">
+        <img class="gallery-item-img" src="${getFanartThumbSrc(fa)}" alt="${desc}" loading="lazy" decoding="async" onload="window.__app.queueMasonryLayout()" onerror="window.__app.handleAssetFallback(this)">
+        <div class="asset-fallback gallery-fallback" aria-hidden="true">
+          <div class="gallery-fallback-mark"></div>
+          <div class="gallery-fallback-meta">
+            <span class="gallery-fallback-label">IMAGE UNAVAILABLE</span>
+            <span class="gallery-fallback-tags">${tagsLabel}</span>
+          </div>
+        </div>
+      </div>
+    `;
+
+    queueMasonryLayout();
+  }
+
   function getFanartsForCharacter(charId) {
-    return (NOVEL_DATA.fanarts || []).filter(fa => fa.tags.includes(charId));
+    const matched = (NOVEL_DATA.fanarts || []).filter(fa => fa.tags.includes(charId));
+    return sortFanartsByTagPriority(matched);
   }
 
   function renderFanartTagsHtml(tags) {
@@ -648,11 +742,11 @@ ${ch.relations.map(r => {
           </div>
         </div>
         ${fanarts.length > 0 ? `
-          <div class="gallery-grid gallery-masonry">
+          <div class="gallery-grid gallery-masonry" data-masonry-grid>
             ${fanarts.map((fa, i) => `
               <article class="gallery-item" style="--delay: ${i * 0.04}s">
                 <div class="gallery-item-img-wrap" onclick="window.__app.openLightbox('${fa.id}', '${charId}')">
-                  <img class="gallery-item-img" src="${getFanartThumbSrc(fa)}" alt="${fa.desc}" loading="lazy" decoding="async" onerror="window.__app.handleAssetFallback(this)">
+                  ${renderFanartAsset(fa)}
                 </div>
                 <div class="gallery-item-info">
                   <p class="gallery-item-desc">${fa.desc}</p>
@@ -666,6 +760,8 @@ ${ch.relations.map(r => {
         ` : '<p class="gallery-empty">暂无同人图</p>'}
       </div>
     `;
+
+    queueMasonryLayout();
   }
 
   /* ========== Lightbox 大图 ========== */
@@ -696,7 +792,7 @@ ${ch.relations.map(r => {
       return;
     }
 
-    currentLightboxList = charId ? getFanartsForCharacter(charId) : (NOVEL_DATA.fanarts || []);
+    currentLightboxList = charId ? getFanartsForCharacter(charId) : sortFanartsByTagPriority(NOVEL_DATA.fanarts || []);
     currentLightboxIndex = currentLightboxList.findIndex(fa => fa.id === fanartId);
     if (currentLightboxIndex === -1) currentLightboxIndex = 0;
     showLightbox();
@@ -877,6 +973,7 @@ ${ch.relations.map(r => {
     switchSub,
     openCharacter,
     handleAssetFallback,
+    queueMasonryLayout,
     closeModal,
     openGallery: (charId) => renderGallery(charId),
     openLightbox,
