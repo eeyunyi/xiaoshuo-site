@@ -303,13 +303,18 @@ function getFanartFullSrc(fa) {
     currentSubCategoryId = subCatId || null;
   }
 
-  function handlePopState() {
+function handlePopState() {
     const state = history.state;
+    // 后退时自动清理弹窗
+    const modal = document.getElementById('characterModal');
+    if (modal) { modal.remove(); document.body.style.overflow = ''; }
+
     if (!state || state.view === 'home') {
       renderHome();
     } else if (state.view === 'category') {
       renderCategory(state.catId, false);
     } else if (state.view === 'gallery') {
+      // 增加对 gallery 状态的支持
       renderGallery(state.charId, false);
     }
   }
@@ -363,8 +368,7 @@ function getFanartFullSrc(fa) {
   function renderCategory(catId, doPush = true) {
     const cat = NOVEL_DATA.categories.find(c => c.id === catId);
     if (!cat) return;
-    if (doPush) pushState('category', catId);
-    currentCategoryId = catId;
+if (doPush) pushState('category', catId, currentSubCategoryId); // 记录子分类以便返回
 
     // 默认选第一个子分类
     const firstSub = cat.subCategories[0];
@@ -816,14 +820,19 @@ ${ch.relations.map(r => {
     }).join('');
   }
 
-  /* ========== 同人图集页面 ========== */
+ /* ========== 同人图集页面 - 增强版 ========== */
   function renderGallery(charId, doPush = true) {
-    closeModal();
+    // 1. 进入前清理弹窗，确保感官上是切换到新页面
+    const modal = document.getElementById('characterModal');
+    if (modal) { modal.remove(); document.body.style.overflow = ''; }
     closeLightbox();
+    
     currentView = 'gallery';
     if (doPush) {
       history.pushState({ view: 'gallery', charId }, '', '#');
     }
+    
+    // 2. 强制置顶
     window.scrollTo(0, 0);
 
     const character = findCharacterById(charId);
@@ -833,7 +842,7 @@ ${ch.relations.map(r => {
     app.innerHTML = `
       <div class="gallery-view animate-fadeIn">
         <div class="gallery-header">
-          <button class="gallery-back-btn" onclick="window.__app.goHome()">
+          <button class="gallery-back-btn" onclick="history.back()">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
             返回
           </button>
@@ -872,9 +881,9 @@ ${ch.relations.map(r => {
     `;
 
     queueMasonryLayout();
+    // 延迟再次触发，确保图片加载后的布局
     setTimeout(queueMasonryLayout, 300);
     setTimeout(queueMasonryLayout, 800);
-    setTimeout(queueMasonryLayout, 2000);
   }
 
   /* ========== Lightbox 大图 ========== */
