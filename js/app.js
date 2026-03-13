@@ -10,6 +10,8 @@
   let currentLightboxList = [];
   let currentLightboxIndex = 0;
   let searchResults = [];
+  let currentCharList = [];      // 当前子分类的角色列表（用于弹窗左右滑动）
+  let currentCharIndex = -1;     // 当前角色在列表中的索引
 
   const app = document.getElementById('app');
 
@@ -504,28 +506,60 @@ function renderCharacterGrid(subCat) {
   function openCharacter(charId) {
     // 在所有数据中查找角色
     let character = null;
+    let charSub = null;
     for (const cat of NOVEL_DATA.categories) {
       for (const sub of cat.subCategories) {
         const found = sub.characters.find(c => c.id === charId);
-        if (found) { character = found; break; }
+        if (found) { character = found; charSub = sub; break; }
       }
       if (character) break;
     }
     if (!character) return;
     currentCharacterId = charId;
+
+    // 构建当前角色列表（同一子分类下的所有角色）
+    if (charSub) {
+      currentCharList = charSub.characters;
+      currentCharIndex = currentCharList.findIndex(c => c.id === charId);
+    }
+
     showModal(character);
   }
 
-  function showModal(ch) {
-    // 关闭已有弹窗
-    closeModal();
+  function modalPrev() {
+    if (currentCharList.length === 0 || currentCharIndex <= 0) return;
+    currentCharIndex--;
+    var ch = currentCharList[currentCharIndex];
+    currentCharacterId = ch.id;
+    showModal(ch, 'slide-right');
+  }
+
+  function modalNext() {
+    if (currentCharList.length === 0 || currentCharIndex >= currentCharList.length - 1) return;
+    currentCharIndex++;
+    var ch = currentCharList[currentCharIndex];
+    currentCharacterId = ch.id;
+    showModal(ch, 'slide-left');
+  }
+
+  function showModal(ch, slideDir) {
+    // 关闭已有弹窗（无动画，立即移除）
+    var old = document.getElementById('characterModal');
+    if (old) {
+      if (old._keyHandler) document.removeEventListener('keydown', old._keyHandler);
+      old.remove();
+    }
+
+    var animClass = slideDir === 'slide-left' ? 'animate-slideLeft'
+                  : slideDir === 'slide-right' ? 'animate-slideRight'
+                  : 'animate-slideUp';
 
     const modal = document.createElement('div');
     modal.className = 'modal-overlay';
     modal.id = 'characterModal';
     modal.innerHTML = `
       <div class="modal-backdrop" onclick="window.__app.closeModal()"></div>
-      <div class="modal-container animate-slideUp">
+      <div class="modal-container ${animClass}">
         <button class="modal-close" onclick="window.__app.closeModal()">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
         </button>
@@ -608,19 +642,50 @@ ${ch.relations.map(r => {
       modal.classList.add('show');
     });
 
-    // ESC 关闭
-    const escHandler = (e) => {
+    // 键盘：ESC 关闭，左右方向键切换角色
+    const keyHandler = (e) => {
       if (e.key === 'Escape') {
         closeModal();
-        document.removeEventListener('keydown', escHandler);
+        document.removeEventListener('keydown', keyHandler);
       }
+      if (e.key === 'ArrowLeft') modalPrev();
+      if (e.key === 'ArrowRight') modalNext();
     };
-    document.addEventListener('keydown', escHandler);
+    document.addEventListener('keydown', keyHandler);
+    modal._keyHandler = keyHandler;
+
+    // 触摸滑动：左右滑切换角色
+    var touchStartX = 0;
+    var touchStartY = 0;
+    var touchMoved = false;
+    var modalContainer = modal.querySelector('.modal-container');
+
+    modalContainer.addEventListener('touchstart', function(e) {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+      touchMoved = false;
+    }, { passive: true });
+
+    modalContainer.addEventListener('touchmove', function(e) {
+      touchMoved = true;
+    }, { passive: true });
+
+    modalContainer.addEventListener('touchend', function(e) {
+      if (!touchMoved) return;
+      var dx = e.changedTouches[0].clientX - touchStartX;
+      var dy = e.changedTouches[0].clientY - touchStartY;
+      // 只在水平滑动距离 > 60px 且大于垂直距离时触发（避免和滚动冲突）
+      if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+        if (dx < 0) modalNext();   // 左滑 → 下一个
+        else modalPrev();           // 右滑 → 上一个
+      }
+    }, { passive: true });
   }
 
   function closeModal() {
     const modal = document.getElementById('characterModal');
     if (modal) {
+      if (modal._keyHandler) document.removeEventListener('keydown', modal._keyHandler);
       modal.classList.remove('show');
       setTimeout(() => {
         modal.remove();
@@ -982,6 +1047,8 @@ ${ch.relations.map(r => {
     handleAssetFallback,
     queueMasonryLayout,
     closeModal,
+    modalPrev,
+    modalNext,
     openGallery: (charId) => renderGallery(charId),
     openLightbox,
     closeLightbox,
