@@ -519,7 +519,7 @@ function switchSub(catId, subId) {
     });
   }
 
-  /* ========== 角色弹窗 ========== */
+/* ========== 角色弹窗 ========== */
   function openCharacter(charId) {
     let character = null;
     let charSub = null;
@@ -533,11 +533,16 @@ function switchSub(catId, subId) {
     if (!character) return;
 
     // 判断是否从弹窗内跳转（点关系角色）
-    var isFromModal = !!document.getElementById('characterModal');
+    var existingModal = document.getElementById('characterModal');
+    var isFromModal = !!existingModal;
 
     if (isFromModal) {
-      // 从弹窗内跳转：记录当前角色到历史栈
-      modalHistory.push(currentCharacterId);
+      // 【核心修改】：不仅记录人物ID，同时抓取当前弹窗的滚动条高度
+      var modalContainer = existingModal.querySelector('.modal-container');
+      modalHistory.push({
+        id: currentCharacterId,
+        scrollTop: modalContainer ? modalContainer.scrollTop : 0
+      });
     } else {
       // 从角色卡片网格点进来：清空历史，建立滑动列表
       modalHistory = [];
@@ -723,20 +728,30 @@ ${ch.relations.map(r => {
     }, { passive: true });
   }
 
-  function closeModal() {
+function closeModal() {
     const modal = document.getElementById('characterModal');
     if (!modal) return;
     if (modal._keyHandler) document.removeEventListener('keydown', modal._keyHandler);
 
     // 如果有历史记录，返回上一个角色而不是关闭弹窗
     if (modalHistory.length > 0) {
-      var prevId = modalHistory.pop();
-      var prevChar = findCharacterById(prevId);
+      // 【核心修改】：取出包含 id 和 scrollTop 的对象
+      var prevData = modalHistory.pop(); 
+      var prevChar = findCharacterById(prevData.id);
+      
       if (prevChar) {
-        currentCharacterId = prevId;
+        currentCharacterId = prevData.id;
         // 直接替换弹窗内容（不走 openCharacter 避免再次 push history）
         modal.remove();
         showModal(prevChar, 'slide-right');
+        
+        // 【核心修改】：利用 requestAnimationFrame 确保DOM渲染后，瞬间将滚动条拉回原来的位置
+        requestAnimationFrame(() => {
+          var newContainer = document.querySelector('#characterModal .modal-container');
+          if (newContainer) {
+            newContainer.scrollTop = prevData.scrollTop;
+          }
+        });
         return;
       }
     }
