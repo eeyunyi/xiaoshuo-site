@@ -1292,7 +1292,8 @@ body::before {
   cursor: pointer;
   position: relative;
   background: rgba(255,255,255,0.03);
-  min-height: 220px;
+  /* 从 220px 降低到 160px，这是大部分横图的合理高度 */
+  min-height: 160px; 
 }
 
 .asset-shell {
@@ -1630,7 +1631,7 @@ body::before {
   }
 
   .gallery-item-img-wrap {
-    min-height: 190px;
+    min-height: 140px;
   }
 
   .gallery-fallback {

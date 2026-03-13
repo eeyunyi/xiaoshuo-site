@@ -793,10 +793,17 @@ ${ch.relations.map(r => {
       const imageWrap = item.querySelector('.gallery-item-img-wrap');
       const info = item.querySelector('.gallery-item-info');
       const fallback = item.querySelector('.gallery-fallback');
+      
       const mediaHeight = imageWrap ? imageWrap.getBoundingClientRect().height : (fallback ? fallback.getBoundingClientRect().height : 0);
       const infoHeight = info ? info.getBoundingClientRect().height : 0;
-      const total = Math.max(mediaHeight + infoHeight, 220);
-      const span = Math.max(18, Math.ceil((total + gap) / (rowHeight + gap)));
+      
+      // 【关键修改 1】：去掉 Math.max(..., 220)
+      const total = mediaHeight + infoHeight;
+      
+      // 【关键修改 2】：去掉 Math.max(18, ...) 的霸道限制
+      // 改为 Math.max(5, ...)，只给一个极小的保底值防止系统计算错误，把空间还给真实图片
+      const span = Math.max(5, Math.ceil((total + gap) / (rowHeight + gap)));
+      
       item.style.gridRowEnd = `span ${span}`;
     });
   }
