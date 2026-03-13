@@ -700,16 +700,24 @@ ${ch.relations.map(r => {
     document.addEventListener('keydown', keyHandler);
     modal._keyHandler = keyHandler;
 
-    // 触摸滑动：仅在原始列表中时才允许左右滑切换
+    // ===== 触摸滑动逻辑 =====
     var touchStartX = 0;
     var touchStartY = 0;
     var touchMoved = false;
+    var isSwipingIgnored = false; // 【新增】用于标记是否应该忽略本次滑动
     var modalContainer = modal.querySelector('.modal-container');
 
     modalContainer.addEventListener('touchstart', function(e) {
       touchStartX = e.touches[0].clientX;
       touchStartY = e.touches[0].clientY;
       touchMoved = false;
+      
+      // 【核心修改】：检测手指按下的位置，如果是在可以横滑的列表内，就忽略全局切换
+      if (e.target.closest('.relations-grid') || e.target.closest('.fanart-preview-grid')) {
+        isSwipingIgnored = true;
+      } else {
+        isSwipingIgnored = false;
+      }
     }, { passive: true });
 
     modalContainer.addEventListener('touchmove', function(e) {
@@ -718,15 +726,18 @@ ${ch.relations.map(r => {
 
     modalContainer.addEventListener('touchend', function(e) {
       if (!touchMoved) return;
-      if (!isOnOriginalList()) return;  // 关系跳转后禁用滑动
+      if (!isOnOriginalList()) return;  
+      if (isSwipingIgnored) return; // 【核心修改】：如果是被标记忽略的区域，直接返回，不执行切换
+
       var dx = e.changedTouches[0].clientX - touchStartX;
       var dy = e.changedTouches[0].clientY - touchStartY;
+      
       if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) {
         if (dx < 0) modalNext();
         else modalPrev();
       }
     }, { passive: true });
-  }
+  } // <--- 这是 showModal 函数的结尾大括号
 
 function closeModal() {
     const modal = document.getElementById('characterModal');
