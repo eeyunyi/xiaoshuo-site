@@ -784,6 +784,7 @@ ${ch.relations.map(r => {
     if (doPush) {
       history.pushState({ view: 'gallery', charId }, '', '#');
     }
+    window.scrollTo(0, 0);
 
     const character = findCharacterById(charId);
     const charName = character?.name || findCharacterName(charId);
