@@ -517,17 +517,29 @@ function renderCharacterGrid(subCat) {
     if (!character) return;
     currentCharacterId = charId;
 
-    // 构建当前角色列表（同一子分类下的所有角色）
-    if (charSub) {
+    // 判断是否从弹窗内跳转（点关系角色）
+    var isFromModal = !!document.getElementById('characterModal');
+
+    if (!isFromModal && charSub) {
+      // 从角色卡片网格点进来：建立滑动列表
       currentCharList = charSub.characters;
       currentCharIndex = currentCharList.findIndex(c => c.id === charId);
     }
+    // 从弹窗内跳转：不改 currentCharList，只替换弹窗内容
 
     showModal(character);
   }
 
   function modalPrev() {
-    if (currentCharList.length === 0 || currentCharIndex <= 0) return;
+    if (currentCharList.length === 0) return;
+    // 如果当前角色不在列表中（关系跳转过来的），先回到列表原位置
+    if (currentCharList[currentCharIndex]?.id !== currentCharacterId) {
+      var ch = currentCharList[currentCharIndex];
+      currentCharacterId = ch.id;
+      showModal(ch, 'slide-right');
+      return;
+    }
+    if (currentCharIndex <= 0) return;
     currentCharIndex--;
     var ch = currentCharList[currentCharIndex];
     currentCharacterId = ch.id;
@@ -535,7 +547,15 @@ function renderCharacterGrid(subCat) {
   }
 
   function modalNext() {
-    if (currentCharList.length === 0 || currentCharIndex >= currentCharList.length - 1) return;
+    if (currentCharList.length === 0) return;
+    // 如果当前角色不在列表中（关系跳转过来的），先回到列表原位置
+    if (currentCharList[currentCharIndex]?.id !== currentCharacterId) {
+      var ch = currentCharList[currentCharIndex];
+      currentCharacterId = ch.id;
+      showModal(ch, 'slide-left');
+      return;
+    }
+    if (currentCharIndex >= currentCharList.length - 1) return;
     currentCharIndex++;
     var ch = currentCharList[currentCharIndex];
     currentCharacterId = ch.id;
