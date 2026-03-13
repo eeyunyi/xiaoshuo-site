@@ -12,6 +12,7 @@
   let searchResults = [];
   let currentCharList = [];      // 当前子分类的角色列表（用于弹窗左右滑动）
   let currentCharIndex = -1;     // 当前角色在列表中的索引
+  let modalHistory = [];          // 弹窗浏览历史栈（从关系角色跳转时记录）
 
   const app = document.getElementById('app');
 
@@ -504,7 +505,6 @@ function renderCharacterGrid(subCat) {
 
   /* ========== 角色弹窗 ========== */
   function openCharacter(charId) {
-    // 在所有数据中查找角色
     let character = null;
     let charSub = null;
     for (const cat of NOVEL_DATA.categories) {
@@ -515,50 +515,47 @@ function renderCharacterGrid(subCat) {
       if (character) break;
     }
     if (!character) return;
-    currentCharacterId = charId;
 
     // 判断是否从弹窗内跳转（点关系角色）
     var isFromModal = !!document.getElementById('characterModal');
 
-    if (!isFromModal && charSub) {
-      // 从角色卡片网格点进来：建立滑动列表
-      currentCharList = charSub.characters;
-      currentCharIndex = currentCharList.findIndex(c => c.id === charId);
+    if (isFromModal) {
+      // 从弹窗内跳转：记录当前角色到历史栈
+      modalHistory.push(currentCharacterId);
+    } else {
+      // 从角色卡片网格点进来：清空历史，建立滑动列表
+      modalHistory = [];
+      if (charSub) {
+        currentCharList = charSub.characters;
+        currentCharIndex = currentCharList.findIndex(c => c.id === charId);
+      }
     }
-    // 从弹窗内跳转：不改 currentCharList，只替换弹窗内容
 
+    currentCharacterId = charId;
     showModal(character);
   }
 
+  function isOnOriginalList() {
+    return currentCharList.length > 0 &&
+           currentCharIndex >= 0 &&
+           currentCharList[currentCharIndex]?.id === currentCharacterId;
+  }
+
   function modalPrev() {
-    if (currentCharList.length === 0) return;
-    // 如果当前角色不在列表中（关系跳转过来的），先回到列表原位置
-    if (currentCharList[currentCharIndex]?.id !== currentCharacterId) {
-      var ch = currentCharList[currentCharIndex];
-      currentCharacterId = ch.id;
-      showModal(ch, 'slide-right');
-      return;
-    }
-    if (currentCharIndex <= 0) return;
+    if (!isOnOriginalList() || currentCharIndex <= 0) return;
     currentCharIndex--;
     var ch = currentCharList[currentCharIndex];
     currentCharacterId = ch.id;
+    modalHistory = [];
     showModal(ch, 'slide-right');
   }
 
   function modalNext() {
-    if (currentCharList.length === 0) return;
-    // 如果当前角色不在列表中（关系跳转过来的），先回到列表原位置
-    if (currentCharList[currentCharIndex]?.id !== currentCharacterId) {
-      var ch = currentCharList[currentCharIndex];
-      currentCharacterId = ch.id;
-      showModal(ch, 'slide-left');
-      return;
-    }
-    if (currentCharIndex >= currentCharList.length - 1) return;
+    if (!isOnOriginalList() || currentCharIndex >= currentCharList.length - 1) return;
     currentCharIndex++;
     var ch = currentCharList[currentCharIndex];
     currentCharacterId = ch.id;
+    modalHistory = [];
     showModal(ch, 'slide-left');
   }
 
@@ -657,6 +654,15 @@ ${ch.relations.map(r => {
 
     document.body.appendChild(modal);
     document.body.style.overflow = 'hidden';
+
+    // 阻止弹窗背景区域的触摸滚动穿透
+    modal.addEventListener('touchmove', function(e) {
+      // 只阻止背景区域的滚动，允许弹窗内容本身滚动
+      if (e.target === modal || e.target.classList.contains('modal-backdrop')) {
+        e.preventDefault();
+      }
+    }, { passive: false });
+
     // 动画
     requestAnimationFrame(() => {
       modal.classList.add('show');
@@ -666,7 +672,6 @@ ${ch.relations.map(r => {
     const keyHandler = (e) => {
       if (e.key === 'Escape') {
         closeModal();
-        document.removeEventListener('keydown', keyHandler);
       }
       if (e.key === 'ArrowLeft') modalPrev();
       if (e.key === 'ArrowRight') modalNext();
@@ -674,7 +679,7 @@ ${ch.relations.map(r => {
     document.addEventListener('keydown', keyHandler);
     modal._keyHandler = keyHandler;
 
-    // 触摸滑动：左右滑切换角色
+    // 触摸滑动：仅在原始列表中时才允许左右滑切换
     var touchStartX = 0;
     var touchStartY = 0;
     var touchMoved = false;
@@ -692,26 +697,41 @@ ${ch.relations.map(r => {
 
     modalContainer.addEventListener('touchend', function(e) {
       if (!touchMoved) return;
+      if (!isOnOriginalList()) return;  // 关系跳转后禁用滑动
       var dx = e.changedTouches[0].clientX - touchStartX;
       var dy = e.changedTouches[0].clientY - touchStartY;
-      // 只在水平滑动距离 > 60px 且大于垂直距离时触发（避免和滚动冲突）
       if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) {
-        if (dx < 0) modalNext();   // 左滑 → 下一个
-        else modalPrev();           // 右滑 → 上一个
+        if (dx < 0) modalNext();
+        else modalPrev();
       }
     }, { passive: true });
   }
 
   function closeModal() {
     const modal = document.getElementById('characterModal');
-    if (modal) {
-      if (modal._keyHandler) document.removeEventListener('keydown', modal._keyHandler);
-      modal.classList.remove('show');
-      setTimeout(() => {
+    if (!modal) return;
+    if (modal._keyHandler) document.removeEventListener('keydown', modal._keyHandler);
+
+    // 如果有历史记录，返回上一个角色而不是关闭弹窗
+    if (modalHistory.length > 0) {
+      var prevId = modalHistory.pop();
+      var prevChar = findCharacterById(prevId);
+      if (prevChar) {
+        currentCharacterId = prevId;
+        // 直接替换弹窗内容（不走 openCharacter 避免再次 push history）
         modal.remove();
-        document.body.style.overflow = '';
-      }, 300);
+        showModal(prevChar, 'slide-right');
+        return;
+      }
     }
+
+    // 没有历史了，真正关闭弹窗
+    modalHistory = [];
+    modal.classList.remove('show');
+    setTimeout(() => {
+      modal.remove();
+      document.body.style.overflow = '';
+    }, 300);
   }
 
   /* ========== 同人图辅助 ========== */
