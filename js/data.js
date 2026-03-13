@@ -626,6 +626,11 @@ window.NOVEL_DATA = {
                   "name": "云海战神",
                   "relation": "师父",
                   "charId": "0108"
+                },
+                   {
+                  "name": "砺风战神",
+                  "relation": "飞升后",
+                  "charId": "0111"
                 }
               ]
             },
@@ -965,7 +970,7 @@ window.NOVEL_DATA = {
               "relations": [
                 {
                   "name": "机巧仙君",
-                  "relation": "原身",
+                  "relation": "自己",
                   "charId": "0112"
                 },
                 {
@@ -3183,7 +3188,13 @@ window.NOVEL_DATA = {
                 "祖籍": "",
                 "武器": ""
               },
-              "relations": [],
+              "relations": [
+                {
+                  "name": "凌北风",
+                  "relation": "飞升后",
+                  "charId": "0017"
+                }
+              ],
               "group": "战神/法相",
               "avatar": ""
             },
@@ -3199,7 +3210,12 @@ window.NOVEL_DATA = {
                 "祖籍": "",
                 "武器": ""
               },
-              "relations": [],
+              "relations": [
+                {
+                  "name": "古木真人",
+                  "relation": "自己",
+                  "charId": "0029"
+                }],
               "group": "百仙"
             },
             {
