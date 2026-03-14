@@ -861,7 +861,7 @@ function closeModal() {
   function renderFanartTagsHtml(tags) {
     return tags.map(tid => {
       const name = findCharacterName(tid);
-      return `<span class="gallery-tag" onclick="event.stopPropagation(); window.__app.openGallery('${tid}')">${name}</span>`;
+      return `<a class="fanart-hashtag" onclick="event.stopPropagation(); window.__app.openGallery('${tid}')">#${name}</a>`;
     }).join('');
   }
 
@@ -900,7 +900,10 @@ function closeModal() {
               <h1 class="gallery-title">${charName} 的同人图</h1>
               <p class="gallery-subtitle">共 ${fanarts.length} 张 · 点击标签可切到别的单人主页</p>
               <div class="gallery-hero-tags">
-                <span class="gallery-tag active">${charName}</span>
+                <button class="gallery-hero-btn" onclick="window.__app.openCharacter('${charId}')">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                  ${charName} 的资料卡
+                </button>
               </div>
             </div>
           </div>
