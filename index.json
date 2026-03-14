@@ -1,0 +1,26 @@
+{
+  "characterId": "0001",
+  "characterName": "姜小满",
+  "basePath": "https://img.nvergu.com/fanart/jiangxiaoman",
+  "images": [
+    { "file": "001.png", "thumb": "001.jpg", "desc": "姜小满" },
+    { "file": "002.png", "thumb": "002.jpg", "desc": "姜小满" },
+    { "file": "003.jpg", "thumb": "003.jpg", "desc": "姜小满" },
+    { "file": "004.jpg", "thumb": "004.jpg", "desc": "姜小满" },
+    { "file": "005.jpg", "thumb": "005.jpg", "desc": "姜小满" },
+    { "file": "006.png", "thumb": "006.jpg", "desc": "姜小满" },
+    { "file": "007.jpg", "thumb": "007.jpg", "desc": "姜小满" },
+    { "file": "008.png", "thumb": "008.jpg", "desc": "姜小满" },
+    { "file": "009.png", "thumb": "009.jpg", "desc": "姜小满" },
+    { "file": "010.png", "thumb": "010.jpg", "desc": "姜小满" },
+    { "file": "011.png", "thumb": "011.jpg", "desc": "姜小满" },
+    { "file": "012.jpg", "thumb": "012.jpg", "desc": "姜小满" },
+    { "file": "013.jpg", "thumb": "013.jpg", "desc": "姜小满" },
+    { "file": "014.png", "thumb": "014.jpg", "desc": "姜小满" },
+    { "file": "015.jpg", "thumb": "015.jpg", "desc": "姜小满" },
+    { "file": "016.png", "thumb": "016.jpg", "desc": "姜小满" },
+    { "file": "017.png", "thumb": "017.jpg", "desc": "姜小满" }
+  ]
+}
+
+
