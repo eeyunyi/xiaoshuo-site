@@ -3791,7 +3791,7 @@ window.NOVEL_DATA = {
       {
         "id": "huangdu",
         "name": "皇都",
-        "desc": "皇都人物与势力。",
+        "desc": "幽州·皇都的人物与势力",
         "groupOrder": [
           "皇室",
           "百官",
