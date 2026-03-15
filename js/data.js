@@ -1724,7 +1724,6 @@ window.NOVEL_DATA = {
             "name": "罗允禾",
             "title": "玉清门",
             "gender": "男",
-            "group": "其他",
             "desc": "昆仑指婚与文梦瑶结为修侣之人。",
             "attributes": {
               "年龄": "28",
@@ -1743,14 +1742,15 @@ window.NOVEL_DATA = {
                 "relation": "修侣",
                 "charId": "0050"
               }
-            ]
+            ],
+            "group": "其他"
           }
         ]
       },
       {
         "id": "xuanyangzong",
         "name": "太衡山玄阳宗",
-        "desc": "（待补充）",
+        "desc": "以勇武著称的武斗宗派，精通十八般兵器，以塑骨心法追求肉身刚猛，鲜少修习远程术法",
         "groupOrder": [
           "三尊者",
           "玄阳宗修士",
@@ -1850,7 +1850,7 @@ window.NOVEL_DATA = {
             "name": "司徒燕",
             "title": "玄阳宗",
             "gender": "女",
-            "desc": "力大无穷，使一柄红莲枪。为为金翎神女之后第二位玄阳女修，有望成为下一任铁豹尊者。",
+            "desc": "力大无穷，使一柄红莲枪。是为裴卿卿之后第二位玄阳女修，有望成为下一任铁豹尊者。",
             "attributes": {
               "年龄": "27",
               "身高": "180",
@@ -1944,7 +1944,7 @@ window.NOVEL_DATA = {
       {
         "id": "yuqingmen",
         "name": "昆仑玉清门",
-        "desc": "（待补充）",
+        "desc": "自称仙门正统起源，掌管人间修者律令，只收王公贵族入门，精修结界与符篆法术",
         "groupOrder": [
           "苍龙七星",
           "玉清门弟子"
@@ -1957,9 +1957,9 @@ window.NOVEL_DATA = {
             "gender": "男",
             "desc": "苍龙七星之首。",
             "attributes": {
-              "年龄": "",
+              "年龄": "66",
               "身高": "",
-              "祖籍": "",
+              "祖籍": "幽州",
               "武器": ""
             },
             "relations": [],
@@ -1972,9 +1972,9 @@ window.NOVEL_DATA = {
             "gender": "男",
             "desc": "苍龙七星之一，丹炉掌者，一般不出门。",
             "attributes": {
-              "年龄": "",
+              "年龄": "？",
               "身高": "178",
-              "祖籍": "",
+              "祖籍": "幽州",
               "武器": ""
             },
             "relations": [
@@ -2003,9 +2003,9 @@ window.NOVEL_DATA = {
             "gender": "男",
             "desc": "苍龙七星之一。",
             "attributes": {
-              "年龄": "",
+              "年龄": "48",
               "身高": "",
-              "祖籍": "",
+              "祖籍": "幽州",
               "武器": ""
             },
             "relations": [],
@@ -2018,9 +2018,9 @@ window.NOVEL_DATA = {
             "gender": "女",
             "desc": "苍龙七星之一。",
             "attributes": {
-              "年龄": "",
+              "年龄": "58",
               "身高": "",
-              "祖籍": "",
+              "祖籍": "祁州",
               "武器": ""
             },
             "relations": [],
@@ -2033,9 +2033,9 @@ window.NOVEL_DATA = {
             "gender": "男",
             "desc": "苍龙七星之一。",
             "attributes": {
-              "年龄": "",
+              "年龄": "43",
               "身高": "",
-              "祖籍": "",
+              "祖籍": "云州",
               "武器": ""
             },
             "relations": [],
@@ -2048,9 +2048,9 @@ window.NOVEL_DATA = {
             "gender": "女",
             "desc": "苍龙七星之一。",
             "attributes": {
-              "年龄": "",
+              "年龄": "38",
               "身高": "",
-              "祖籍": "",
+              "祖籍": "幽州",
               "武器": ""
             },
             "relations": [],
@@ -2063,9 +2063,9 @@ window.NOVEL_DATA = {
             "gender": "女",
             "desc": "玉清门修士。",
             "attributes": {
-              "年龄": "",
-              "身高": "",
-              "祖籍": "",
+              "年龄": "24",
+              "身高": "160",
+              "祖籍": "皇都",
               "武器": ""
             },
             "relations": [
@@ -2089,9 +2089,9 @@ window.NOVEL_DATA = {
             "gender": "男",
             "desc": "玉清门修士。",
             "attributes": {
-              "年龄": "",
-              "身高": "",
-              "祖籍": "",
+              "年龄": "18",
+              "身高": "175",
+              "祖籍": "皇都",
               "武器": ""
             },
             "relations": [
@@ -2110,9 +2110,9 @@ window.NOVEL_DATA = {
             "gender": "男",
             "desc": "玉清门修士。",
             "attributes": {
-              "年龄": "",
-              "身高": "",
-              "祖籍": "",
+              "年龄": "17",
+              "身高": "179",
+              "祖籍": "皇都",
               "武器": ""
             },
             "relations": [
@@ -2131,9 +2131,9 @@ window.NOVEL_DATA = {
             "gender": "男",
             "desc": "玉清门修士。",
             "attributes": {
-              "年龄": "",
-              "身高": "",
-              "祖籍": "",
+              "年龄": "28",
+              "身高": "173",
+              "祖籍": "云州",
               "武器": ""
             },
             "relations": [
@@ -2821,7 +2821,7 @@ window.NOVEL_DATA = {
               },
                {
                 "name": "幽荧",
-                "relation": "下属",
+                "relation": "小弟",
                 "charId": "0092"
               },
               {
@@ -2868,7 +2868,7 @@ window.NOVEL_DATA = {
               },
               {
                 "name": "赤狐",
-                "relation": "下属",
+                "relation": "随从",
                 "charId": "0091"
               },
               {
@@ -2898,9 +2898,9 @@ window.NOVEL_DATA = {
                 "relation": "主君",
                 "charId": "0088"
               },
-              {
+               {
                 "name": "灾凤",
-                "relation": "上司",
+                "relation": "跟随",
                 "charId": "0090"
               },
               {
@@ -2930,9 +2930,9 @@ window.NOVEL_DATA = {
                 "charId": "0088"
               },
               {
-                "name": "灾凤",
-                "relation": "上司",
-                "charId": "0090"
+                "name": "烬天",
+                "relation": "老大",
+                "charId": "0089"
               },
               {
                 "name": "洛雪茗",
@@ -3793,7 +3793,8 @@ window.NOVEL_DATA = {
         "name": "皇都",
         "desc": "皇都人物与势力。",
         "groupOrder": [
-          "紫承宫",
+          "皇室",
+          "百官",
           "千香楼"
         ],
         "characters": [
@@ -3802,120 +3803,238 @@ window.NOVEL_DATA = {
             "name": "佑帝",
             "title": "紫承宫",
             "gender": "男",
-            "desc": "",
+            "desc": "当朝帝王。",
             "attributes": {
-              "年龄": "",
-              "身高": "",
-              "祖籍": "",
+              "年龄": "55",
+              "身高": "178",
+              "祖籍": "皇都",
               "武器": ""
             },
-            "relations": [],
-            "group": "紫承宫"
+            "relations": [
+              {
+                "name": "翟皇后",
+                "relation": "妻子",
+                "charId": "0121"
+              },
+              {
+                "name": "衍丰太子",
+                "relation": "儿子",
+                "charId": "0123"
+              },
+              {
+                "name": "清乡公主",
+                "relation": "妹妹",
+                "charId": "0122"
+              },
+              {
+                "name": "知微国师",
+                "relation": "臣子",
+                "charId": "0124"
+              },
+              {
+                "name": "向秀",
+                "relation": "臣子",
+                "charId": "0126"
+              },
+              {
+                "name": "向珣",
+                "relation": "臣子",
+                "charId": "0127"
+              }
+            ],
+            "group": "皇室"
           },
           {
             "id": "0121",
             "name": "翟皇后",
             "title": "紫承宫",
             "gender": "女",
-            "desc": "",
+            "desc": "翟琳儿，佑帝太子时期执意接进东宫的风尘女子。",
             "attributes": {
-              "年龄": "",
-              "身高": "",
-              "祖籍": "",
+              "年龄": "？",
+              "身高": "175",
+              "祖籍": "？",
               "武器": ""
             },
-            "relations": [],
-            "group": "紫承宫"
+            "relations": [
+              {
+                "name": "灾凤",
+                "relation": "自己",
+                "charId": "0090"
+              },
+              {
+                "name": "佑帝",
+                "relation": "夫君",
+                "charId": "0120"
+              },
+              {
+                "name": "衍丰太子",
+                "relation": "儿子",
+                "charId": "0123"
+              }
+            ],
+            "group": "皇室"
           },
           {
             "id": "0122",
             "name": "清乡公主",
             "title": "紫承宫",
             "gender": "女",
-            "desc": "",
+            "desc": "佑帝同父异母之妹，长公主。",
             "attributes": {
-              "年龄": "",
+              "年龄": "32",
               "身高": "",
-              "祖籍": "",
+              "祖籍": "皇都",
               "武器": ""
             },
-            "relations": [],
-            "group": "紫承宫"
+            "relations": [
+              {
+                "name": "佑帝",
+                "relation": "哥哥",
+                "charId": "0120"
+              }
+            ],
+            "group": "皇室"
           },
           {
             "id": "0123",
             "name": "衍丰太子",
             "title": "紫承宫",
             "gender": "男",
-            "desc": "",
+            "desc": "当朝太子。",
             "attributes": {
-              "年龄": "",
+              "年龄": "28",
               "身高": "",
-              "祖籍": "",
+              "祖籍": "皇都",
               "武器": ""
             },
-            "relations": [],
-            "group": "紫承宫"
+            "relations": [
+              {
+                "name": "佑帝",
+                "relation": "父亲",
+                "charId": "0120"
+              },
+              {
+                "name": "翟皇后",
+                "relation": "母亲",
+                "charId": "0121"
+              },
+              {
+                "name": "漆九",
+                "relation": "老师",
+                "charId": "0125"
+              }
+            ],
+            "group": "皇室"
           },
           {
             "id": "0124",
             "name": "知微国师",
             "title": "紫承宫",
             "gender": "男",
-            "desc": "",
+            "desc": "当朝国师。",
             "attributes": {
-              "年龄": "",
+              "年龄": "67",
               "身高": "",
-              "祖籍": "",
+              "祖籍": "幽州",
               "武器": ""
             },
-            "relations": [],
-            "group": "紫承宫"
+            "relations": [
+              {
+                "name": "佑帝",
+                "relation": "国君",
+                "charId": "0120"
+              },
+              {
+                "name": "漆九",
+                "relation": "弟子",
+                "charId": "0125"
+              }
+            ],
+            "group": "百官"
           },
           {
             "id": "0125",
             "name": "漆九",
             "title": "紫承宫",
             "gender": "女",
-            "desc": "",
+            "desc": "太子仙师。",
             "attributes": {
-              "年龄": "",
+              "年龄": "25",
               "身高": "",
-              "祖籍": "",
+              "祖籍": "云州",
               "武器": ""
             },
-            "relations": [],
-            "group": "紫承宫"
+            "relations": [
+              {
+                "name": "知微国师",
+                "relation": "老师",
+                "charId": "0124"
+              },
+              {
+                "name": "衍丰太子",
+                "relation": "徒弟",
+                "charId": "0123"
+              }
+            ],
+            "group": "百官"
           },
           {
             "id": "0126",
             "name": "向秀",
             "title": "紫承宫",
             "gender": "男",
-            "desc": "",
+            "desc": "当朝大将军，被封为镇国侯。",
             "attributes": {
-              "年龄": "",
+              "年龄": "50",
               "身高": "",
-              "祖籍": "",
+              "祖籍": "皇都",
               "武器": ""
             },
-            "relations": [],
-            "group": "紫承宫"
+            "relations": [
+              {
+                "name": "佑帝",
+                "relation": "国君",
+                "charId": "0120"
+              },
+              {
+                "name": "向鼎",
+                "relation": "长子",
+                "charId": "0021"
+              },
+              {
+                "name": "向珣",
+                "relation": "次子",
+                "charId": "0127"
+              }
+            ],
+            "group": "百官"
           },
           {
             "id": "0127",
             "name": "向珣",
             "title": "紫承宫",
             "gender": "男",
-            "desc": "",
+            "desc": "镇国侯次子，名满皇都的向小侯爷。",
             "attributes": {
-              "年龄": "",
+              "年龄": "17",
               "身高": "",
-              "祖籍": "",
+              "祖籍": "皇都",
               "武器": ""
             },
-            "relations": [],
-            "group": "紫承宫"
+            "relations": [
+              {
+                "name": "佑帝",
+                "relation": "国君",
+                "charId": "0120"
+              },
+              {
+                "name": "向秀",
+                "relation": "父亲",
+                "charId": "0126"
+              }
+            ],
+            "group": "百官"
           },
           {
             "id": "0142",
