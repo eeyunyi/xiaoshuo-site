@@ -2501,7 +2501,7 @@ window.NOVEL_DATA = {
               },
               {
                 "name": "子桑楚",
-                "relation": "继承者",
+                "relation": "先驱",
                 "charId": "0156"
               },
               {
@@ -3548,9 +3548,9 @@ window.NOVEL_DATA = {
                 "charId": "0017"
               },
               {
-                "name": "凌司辰",
+                "name": "凌司辰（魔君）",
                 "relation": "敌对",
-                "charId": "0016"
+                "charId": "0087"
               },
               {
                 "name": "羽霜",
@@ -3578,6 +3578,11 @@ window.NOVEL_DATA = {
                 "name": "焚冲仙尊",
                 "relation": "上司",
                 "charId": "0106"
+              },
+              {
+                "name": "古木真人",
+                "relation": "自己",
+                "charId": "0029"
               }
             ],
             "group": "百仙"
@@ -4748,11 +4753,16 @@ window.NOVEL_DATA = {
                 "name": "子桑怜",
                 "relation": "姐姐/敌对",
                 "charId": "0155"
-              },
+              },            
               {
                 "name": "文铄然",
                 "relation": "恋人",
                 "charId": "0158"
+              },
+                 {
+                "name": "姜小满（魔君）",
+                "relation": "继承者",
+                "charId": "0160"
               }
             ],
             "avatar": ""
