@@ -1454,7 +1454,7 @@ window.NOVEL_DATA = {
       {
         "id": "wenjia",
         "name": "青州文家",
-        "desc": "潮湿之地善蛊虫与丹药的仙门世家。",
+        "desc": "潮湿之地善蛊虫与丹药的仙门世家",
         "groupOrder": [
           "文家宗族",
           "其他"
@@ -4114,7 +4114,7 @@ window.NOVEL_DATA = {
       {
         "id": "meixueshanzhuang",
         "name": "梅雪山庄",
-        "desc": "（待补充）",
+        "desc": "位于扬州的乐器世家",
         "characters": [
           {
             "id": "0128",
@@ -4261,7 +4261,7 @@ window.NOVEL_DATA = {
       {
         "id": "qianfenggu",
         "name": "潜风谷",
-        "desc": "（待补充）",
+        "desc": "隐于山谷的旁支小派，因犯下通魔大罪而被昆仑问罪铲除",
         "characters": [
           {
             "id": "0138",
@@ -4352,7 +4352,7 @@ window.NOVEL_DATA = {
       {
         "id": "baihuojiao",
         "name": "拜火教",
-        "desc": "（待补充）",
+        "desc": "远在大漠深处信奉兀勒罕的异教，被中原认为是“邪教”",
         "characters": [
           {
             "id": "0145",
@@ -4585,7 +4585,7 @@ window.NOVEL_DATA = {
       {
         "id": "dahuangyuan",
         "name": "大荒原",
-        "desc": "（待补充）",
+        "desc": "大漠最西部抵达世界尽头“云天屏障”的终端",
         "characters": [
           {
             "id": "0150",
@@ -4622,7 +4622,7 @@ window.NOVEL_DATA = {
       {
         "id": "zhuming",
         "name": "朱明",
-        "desc": "（待补充）",
+        "desc": "上古时代三国之中最强盛的国度",
         "characters": [
           {
             "id": "0151",
@@ -4764,7 +4764,7 @@ window.NOVEL_DATA = {
       {
         "id": "luheng",
         "name": "陆衡",
-        "desc": "（待补充）",
+        "desc": "上古三国之一，善机关技术",
         "characters": [
           {
             "id": "0158",
@@ -4812,7 +4812,7 @@ window.NOVEL_DATA = {
       {
         "id": "jinyunshe",
         "name": "缙云神社",
-        "desc": "（待补充）",
+        "desc": "上古时代神司一族居住之处，能直接与创世神【九曲神龙】对话",
         "characters": [
           {
             "id": "0155",
