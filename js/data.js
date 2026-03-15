@@ -2815,8 +2815,13 @@ window.NOVEL_DATA = {
             },
             "relations": [
               {
-                "name": "幽荧",
+                "name": "千炀",
                 "relation": "主君",
+                "charId": "0088"
+              },
+               {
+                "name": "幽荧",
+                "relation": "下属",
                 "charId": "0092"
               },
               {
